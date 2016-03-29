@@ -1,0 +1,7 @@
+{
+	"main": "index.js",
+	"version": 1,
+	"types": {
+		"app": 0
+	}
+}
