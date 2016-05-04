@@ -1,0 +1,9 @@
+{
+	"main": "index.js",
+	"roots": ["user"],
+	"version": 1,
+	"types": {
+		"blog": 2592000
+	},
+	"EVENT": {}
+}

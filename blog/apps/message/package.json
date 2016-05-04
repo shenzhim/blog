@@ -1,0 +1,11 @@
+{
+	"main": "index.js",
+	"roots": ["object"],
+	"install": ["blog"],
+	"depends": ["root"],
+	"version": 1,
+	"types": {
+		"block": 2592000
+	},
+	"EVENT": {}
+}

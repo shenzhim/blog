@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Shenzm &middot; on the web</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+
+<body>
+    <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-item">
+            <p>image todo</p>
+        </div>
+        <nav class="sidebar-nav">
+            <a class="sidebar-nav-item" href="/blog/index.html">主页</a>
+            <a class="sidebar-nav-item" href="/blog/archive.html">文章</a>
+            <a class="sidebar-nav-item" href="/blog/me.html">关于我</a>
+        </nav>
+    </div>
+    <div class="wrap">
+        <header>
+            <div class="masthead">
+                <div class="container">
+                    <h3 class="masthead-title">
+                      <a href="/blog/index.html" title="Home">Shenzhim </a><small>on the web</small>
+                    </h3>
+                </div>
+            </div>
+        </header>
+        <main class="container content">
+            <section class="posts">
+                {@each list as item}
+                <div class="post">
+                    <h2 class="post-title">
+                      <a href="${item.url}">${item.title}</a>
+                    </h2>
+                    <span class="post-date">${item.time}</span>
+                    <p>${item.summary}</p>
+                    <a href="${item.url}">...</a>
+                </div>
+                {@/each}
+            </section>
+            <footer>
+                <a href="/blog/archive.html">更多...</a>
+            </footer>
+        </main>
+    </div>
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    <script>
+    (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+            var target = e.target;
+
+            if (!checkbox.checked ||
+                sidebar.contains(target) ||
+                (target === checkbox || target === toggle)) return;
+
+            checkbox.checked = false;
+        }, false);
+    })(document);
+    </script>
+</body>
+
+</html>

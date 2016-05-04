@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Shenzhim on the web</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/editormd.css" />
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/editormd.js"></script>
+    <script src="/lib/marked.min.js"></script>
+    <script src="/lib/prettify.min.js"></script>
+    <script src="/lib/raphael.min.js"></script>
+    <script src="/lib/underscore.min.js"></script>
+    <script src="/lib/sequence-diagram.min.js"></script>
+    <script src="/lib/flowchart.min.js"></script>
+    <script src="/lib/jquery.flowchart.min.js"></script>
+    <script type="text/javascript">
+    var editor;
+    $(function() {
+        $.ajax({
+            type: "GET",
+            url: "${url}",
+            dataType: "json",
+            success: function(result) {
+                editor = editormd.markdownToHTML("test-editormd", {
+                    markdown: "#" + result.message.title + "\n" + result.message.content,
+                    width: "78%",
+                    autoHeight: true,
+                    path: "/lib/",
+                    htmlDecode: "style,script,iframe",
+                    tex: true,
+                    emoji: true,
+                    taskList: true,
+                    flowChart: true,
+                    sequenceDiagram: true
+                });
+
+                document.title = 'Shenzm_' + result.message.title;
+            },
+            error: function(message) {
+                alert("获取数据失败！" + message);
+            }
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-item">
+            <p>image todo</p>
+        </div>
+        <nav class="sidebar-nav">
+            <a class="sidebar-nav-item" href="/blog/index.html">主页</a>
+            <a class="sidebar-nav-item" href="/blog/archive.html">文章</a>
+            <a class="sidebar-nav-item" href="/blog/me.html">关于我</a>
+        </nav>
+    </div>
+    <div class="wrap" id="layout" style="text-align: center;">
+        <div id="test-editormd" style="margin-right: auto; margin-left: auto;">
+            <textarea style="display:none;"></textarea>
+        </div>
+    </div>
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    <script>
+    (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+            var target = e.target;
+
+            if (!checkbox.checked ||
+                sidebar.contains(target) ||
+                (target === checkbox || target === toggle)) return;
+
+            checkbox.checked = false;
+        }, false);
+    })(document);
+    </script>
+</body>
+
+</html>

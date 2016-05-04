@@ -1,0 +1,11 @@
+{
+	"main": "index.js",
+	"roots": ["object"],
+	"depends": ["root"],
+	"version": 1,
+	"types": {
+		"base": 2592000
+	},
+	"test": ["test/index.js"],
+	"EVENT": {}
+}
