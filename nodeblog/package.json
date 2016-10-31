@@ -1,0 +1,11 @@
+{
+  "name": "vue2.0_blog",
+  "version": "0.1.0",
+  "description": "采用vue2.0重构博客网站，体验vue2.0的服务端渲染",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shenzm",
+  "license": "ISC"
+}
