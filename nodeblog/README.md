@@ -10,7 +10,7 @@
 # ui端
 	框架：采用vuex 2.0框架，及vue-router, vue-resource及vue-cli 。
 
-	css：采用sass预处理语言，动画效果采用Aminate.css 动画库。
+	css：采用postcss处理css，动画效果采用Aminate.css 动画库。
 
 	构建工具：采用gulp＋webpack，gulp的好处是任务式流程，利用Node.js流，可以快速构建项目并减少频繁的IO操作。
 
