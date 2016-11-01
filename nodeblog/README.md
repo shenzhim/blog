@@ -8,7 +8,7 @@
 	采用pm2来启动及监控node服务状况。
 
 # ui端
-	框架：采用vuex 2.0框架，及vue-router, vue-resource及vue-cli 。
+	框架：采用vuex 2.0框架，及vue-router, vue-resource 搭建一个SPA应用。
 
 	css：采用postcss处理css，动画效果采用Aminate.css 动画库。
 
