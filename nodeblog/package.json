@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node "
+    "dev": "nodemon -e js -i public/  starter.js"
   },
   "babel": {
     "presets": [
@@ -19,10 +19,12 @@
     "babel-core": "^6.18.0",
     "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "^6.18.0",
-    "babel-preset-stage-3": "^6.17.0"
+    "babel-preset-stage-3": "^6.17.0",
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
+    "compression": "^1.6.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "~4.14.0",

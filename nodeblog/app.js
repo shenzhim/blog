@@ -21,10 +21,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(compression());
 
-app.use('/', index);
-app.use('/users', users);
-
-
 // dispatcher
 try {
 	require('./dispatch')(app);
@@ -47,10 +43,10 @@ try {
 		res.render('error');
 	});
 } catch (err) {
-	logger.error(err);
+	console.error(err);
 }
 
 // listener
-app.listen(config.port, function() {
-	logger.info('yohobuy start');
+app.listen(app.get('port') || "8080", function() {
+	console.log('blog server start');
 });
