@@ -14,3 +14,5 @@
 
 	构建工具：采用gulp＋webpack，gulp的好处是任务式流程，利用Node.js流，可以快速构建项目并减少频繁的IO操作。
 
+	小图标：采用gulp-svg-sprite库，适配强，自动话程度高
+
