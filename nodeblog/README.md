@@ -16,3 +16,9 @@
 
 	小图标：采用gulp-svg-sprite库，适配强，自动话程度高
 
+# 启动流程
+	1. npm install 
+	
+	2. 开发环境：npm run dev
+
+	3. 生产环境：pm2 startOrRestart process.json

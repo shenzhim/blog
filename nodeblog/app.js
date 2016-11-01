@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+app.set('port', process.env.PORT || 3000);
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
@@ -47,6 +48,6 @@ try {
 }
 
 // listener
-app.listen(app.get('port') || "8080", function() {
-	console.log('blog server start');
+app.listen(app.get('port'), function() {
+	console.log('blog server start on port: ', app.get('port'));
 });
