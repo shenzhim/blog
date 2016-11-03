@@ -4,8 +4,8 @@
   "description": "采用vue2.0重构博客网站，体验vue2.0的服务端渲染",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -e js -i public/  starter.js"
+    "dev": "nodemon -e js -i public/  starter.js",
+    "server": "pm2 startOrRestart process.json"
   },
   "babel": {
     "presets": [
@@ -29,6 +29,7 @@
     "debug": "~2.2.0",
     "express": "~4.14.0",
     "morgan": "~1.7.0",
+    "pm2": "^2.0.12",
     "serve-favicon": "~2.3.0"
   }
 }
