@@ -14,13 +14,15 @@ const postcssPlugin = () => {
         }),
         require('autoprefixer')({
             browsers: ['> 1%']
-        }),
+        })
     ];
 };
 
 const config = {
+    devtool: '#cheap-module-eval-source-map',
     entry: {
-        app: './js/main.js'
+        app: path.join(__dirname, '/js/main.js'),
+        vendor: ['vue', 'vue-router']
     },
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -32,10 +34,17 @@ const config = {
         fallback: [path.join(__dirname, '../node_modules')],
         alias: {
             'vue$': 'vue/dist/vue'
-        }
+        },
+        modulesDirectories: ['node_modules', './vue', './css', './js']
+    },
+    resolveLoader: {
+        fallback: [path.join(__dirname, '../node_modules')]
     },
     module: {
         loaders: [{
+            test: /\.css$/,
+            loader: ExtractTextPlugin.extract('vue-style', 'css')
+        }, {
             test: /\.vue$/,
             loader: 'vue'
         }, {
@@ -53,28 +62,27 @@ const config = {
         },
         autoprefixer: false,
         loaders: {
-            css: ExtractTextPlugin.extract(['vue-style!css'])
+            css: ExtractTextPlugin.extract('vue-style', 'css')
         }
     },
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         }),
-        new webpack.optimize.OccurenceOrderPlugin()
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'vendor.js'
+        })
     ]
 }
 
 if (process.env.NODE_ENV === 'development') {
-    config.devtool = '#cheap-module-eval-source-map';
     config.plugins.push(new webpack.NoErrorsPlugin());
 } else if (process.env.NODE_ENV === 'production') {
+    config.devtool = '#cheap-module-source-map';
     config.plugins.push(
-        new ExtractTextPlugin('styles.css'),
-        // this is needed in webpack 2 for minifying CSS
-        new webpack.LoaderOptionsPlugin({
-            minimize: true
-        }),
-        // minify JS
+        new ExtractTextPlugin('[name].css'),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
@@ -82,5 +90,4 @@ if (process.env.NODE_ENV === 'development') {
         })
     )
 }
-
 module.exports = config;
