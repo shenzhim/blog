@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const postcssPlugin = () => {
     return [
@@ -27,7 +28,7 @@ const config = {
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/',
-        filename: '[name].js'
+        filename: '[name].[hash].js'
     },
     resolve: {
         extensions: ['', '.js', '.vue'],
@@ -50,7 +51,10 @@ const config = {
         }, {
             test: /\.js$/,
             loader: 'babel',
-            exclude: /node_modules/
+            exclude: /node_modules/,
+            query: {
+                presets: ['es2015', 'stage-3']
+            }
         }]
     },
     vue: {
@@ -73,6 +77,11 @@ const config = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             filename: 'vendor.js'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: __dirname + '/index.tmpl.html',
+            inject: true
         })
     ]
 }
@@ -87,6 +96,17 @@ if (process.env.NODE_ENV === 'development') {
             compress: {
                 warnings: false
             }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: __dirname + '/index.tmpl.html',
+            inject: true,
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true
+            },
+            chunksSortMode: 'dependency'
         })
     )
 }

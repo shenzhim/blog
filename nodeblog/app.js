@@ -1,16 +1,26 @@
 var express = require('express');
+var webpack = require('webpack');
 var path = require('path');
-const compression = require('compression');
+var compression = require('compression');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var app = express();
-
 app.set('port', process.env.PORT || 3000);
 
-// handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())
+if (app.get('env') === 'development') {
+	var compiler = webpack(require('./public/webpack.config'))
+	var devMiddleware = require('webpack-dev-middleware')(compiler, {
+		publicPath: '/',
+		stats: {
+			colors: true,
+			chunks: false
+		}
+	})
+	app.use(devMiddleware);
+}
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
@@ -18,7 +28,7 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/dist')));
 app.use(compression());
 
 // dispatcher

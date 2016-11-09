@@ -8,12 +8,6 @@
     "server": "pm2 startOrRestart process.json",
     "build": "NODE_ENV='production' node build.js"
   },
-  "babel": {
-    "presets": [
-      "es2015",
-      "stage-3"
-    ]
-  },
   "author": "Shenzm",
   "license": "ISC",
   "devDependencies": {
@@ -44,7 +38,8 @@
     "url-loader": "^0.5.7",
     "vue-loader": "^9.4.0",
     "vue-style-loader": "^1.0.0",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.8.4"
   },
   "dependencies": {
     "body-parser": "~1.15.2",

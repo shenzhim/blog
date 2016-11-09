@@ -1,5 +1,11 @@
+require('shelljs/global');
+var path = require('path');
 var webpack = require('webpack');
 var webpackConfig = require('./public/webpack.config');
+
+var assetsPath = path.resolve(__dirname, './public/dist');
+rm('-rf', assetsPath);
+mkdir('-p', assetsPath);
 
 webpack(webpackConfig, function(err, stats) {
 	if (err) throw err
