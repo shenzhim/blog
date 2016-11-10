@@ -19,14 +19,21 @@ const postcssPlugin = () => {
     ];
 };
 
+const cssLoader = () => {
+    if (process.env.NODE_ENV === 'production') {
+        return ExtractTextPlugin.extract('vue-style', 'css');
+    }
+    return 'vue-style!css';
+}
+
 const config = {
     devtool: '#cheap-module-eval-source-map',
     entry: {
-        app: path.join(__dirname, '/js/main.js'),
+        app: path.join(__dirname, './js/main.js'),
         vendor: ['vue', 'vue-router']
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.join(__dirname, './dist'),
         publicPath: '/',
         filename: '[name].[hash].js'
     },
@@ -35,25 +42,25 @@ const config = {
         fallback: [path.join(__dirname, '../node_modules')],
         alias: {
             'vue$': 'vue/dist/vue'
-        },
-        modulesDirectories: ['node_modules', './vue', './css', './js']
-    },
-    resolveLoader: {
-        fallback: [path.join(__dirname, '../node_modules')]
+        }
     },
     module: {
         loaders: [{
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract('vue-style', 'css')
+            loader: cssLoader()
         }, {
             test: /\.vue$/,
             loader: 'vue'
         }, {
             test: /\.js$/,
             loader: 'babel',
-            exclude: /node_modules/,
+            exclude: /node_modules/
+        }, {
+            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+            loader: 'url',
             query: {
-                presets: ['es2015', 'stage-3']
+                limit: 10000,
+                name: '[name].[hash:7].[ext]'
             }
         }]
     },
@@ -66,7 +73,7 @@ const config = {
         },
         autoprefixer: false,
         loaders: {
-            css: ExtractTextPlugin.extract('vue-style', 'css')
+            css: cssLoader()
         }
     },
     plugins: [
