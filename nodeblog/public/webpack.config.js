@@ -38,7 +38,7 @@ const config = {
         filename: '[name].[hash].js'
     },
     resolve: {
-        extensions: ['', '.js', '.vue'],
+        extensions: ['', '.js', '.vue', '.css'],
         fallback: [path.join(__dirname, '../node_modules')],
         alias: {
             'vue$': 'vue/dist/vue'

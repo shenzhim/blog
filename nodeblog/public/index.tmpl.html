@@ -8,12 +8,17 @@
 </head>
 <body>
 	<div id="app">
-		<h1>Hello App!</h1>
-		 <p>
-		    <router-link to="/foo">Go to Foo</router-link>
-		    <router-link to="/bar">Go to Bar</router-link>
-		 </p>
+		<ul>
+          <li><router-link class="" to="/foo">AboutMe</router-link></li>
+          <li><router-link class="" to="/foo">Blog</router-link></li>
+          <li><router-link class="" to="/foo">Github</router-link></li>
+          <li><router-link class="" to="/foo">Email</router-link></li>
+        </ul>
 		<router-view></router-view>
+
 	</div>
+	<footer id="footer">
+		<span class="copyright">Copyright © 2016 by Shenzm.志敏</span>
+	</footer>
 </body>
 </html>

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import App from '../vue/app';
 
 Vue.use(VueRouter);
 
@@ -10,19 +11,19 @@ const Bar = {
 	template: '<div>bar</div>'
 }
 
-const routes = [{
-	path: '/foo',
-	component: Foo
-}, {
-	path: '/bar',
-	component: Bar
-}]
-
-const router = new VueRouter({
-	routes
-})
-
 new Vue({
 	el: '#app',
-	router
+	template: '<App/>',
+	components: {
+		App
+	},
+	router: new VueRouter({
+		routes: [{
+			path: '/foo',
+			component: Foo
+		}, {
+			path: '/bar',
+			component: Bar
+		}]
+	})
 })
