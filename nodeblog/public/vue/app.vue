@@ -7,6 +7,7 @@
       <span></span>
       <span></span>
     </div>
+    <div class="overlay"></div>
     <div class="content">
         <a class="avatar" href="#"><img src="../img/avatar.png" alt="shenzm"></a>
         <h1>Shenzm.志敏</h1>

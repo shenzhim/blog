@@ -6,13 +6,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const postcssPlugin = () => {
     return [
         require('precss'),
-        require('postcss-pxtorem')({
-            rootValue: 40,
-            unitPrecision: 5, // 保留5位小数字
-            minPixelValue: 2, // 小于 2 时，不转换
-            selectorBlackList: [], // 选择器黑名单，可以使用正则
-            propWhiteList: [] // 属性名称为空，表示替换所有属性的值
-        }),
+    // require('postcss-pxtorem')({
+    //     rootValue: 40,
+    //     unitPrecision: 5, // 保留5位小数字
+    //     minPixelValue: 2, // 小于 2 时，不转换
+    //     selectorBlackList: [], // 选择器黑名单，可以使用正则
+    //     propWhiteList: [] // 属性名称为空，表示替换所有属性的值
+    // }),
         require('autoprefixer')({
             browsers: ['> 1%']
         })
