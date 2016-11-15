@@ -5,7 +5,7 @@
   top: 0px;
   left: 0px;
   background: white;
-  opacity: .3;
+  opacity: .1;
 }
 
 .bg {
@@ -101,6 +101,23 @@
             width: 150px;
             height: 150px;
         }        
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      font-size: 40px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    p {
+      text-align: center;
+      font-size: 20px;
+      margin-top: 10px;
+      color: #fff;
+      opacity: .8;
     }
 
 }
