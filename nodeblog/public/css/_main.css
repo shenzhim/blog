@@ -102,6 +102,15 @@
     }
 }
 
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+
 @keyframes imageAnimation {
   0% {
     opacity: 0;

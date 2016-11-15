@@ -11,19 +11,20 @@ const Bar = {
 	template: '<div>bar</div>'
 }
 
+const router = new VueRouter({
+	routes: [{
+		path: '/foo',
+		component: Foo
+	}, {
+		path: '/bar',
+		component: Bar
+	}]
+})
+
 new Vue({
 	el: '#app',
-	template: '<App/>',
 	components: {
 		App
 	},
-	router: new VueRouter({
-		routes: [{
-			path: '/foo',
-			component: Foo
-		}, {
-			path: '/bar',
-			component: Bar
-		}]
-	})
+	router
 })
