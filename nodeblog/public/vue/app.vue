@@ -14,11 +14,12 @@
         <p class="describe">一个男人总要有一技之长来养家糊口...</p>
         <ul class="navcontainer">
           <li class="nav_1"><router-link class="" to="/foo"><svg class="icon icon-smile-o"><use xlink:href="#icon-smile-o"></use></svg></router-link></li>
-          <li class="nav_2"><router-link class="" to="/foo"><svg class="icon icon-th"><use xlink:href="#icon-th"></use></svg></router-link></li>
+          <li class="nav_2"><router-link class="" to="/foo"><svg class="icon icon-align-left"><use xlink:href="#icon-align-left"></use></svg></router-link></li>
           <li class="nav_3"><router-link class="" to="/foo"><svg class="icon icon-github"><use xlink:href="#icon-github"></use></svg></router-link></li>
           <li class="nav_4"><router-link class="" to="/foo"><svg class="icon icon-envelope-square"><use xlink:href="#icon-envelope-square"></use></svg></router-link></li>
           <li class="nav_5"><router-link class="" to="/foo"><svg class="icon icon-feed"><use xlink:href="#icon-feed"></use></svg></router-link></li>
         </ul>
+        <router-link class="down" to="/foo"><svg class="icon icon-double-down"><use xlink:href="#icon-double-down"></use></svg></router-link>
     </div>
     <footer class="footer">
       <span class="copyright">Copyright © 2016 by Shenzm.志敏</span>
