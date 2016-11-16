@@ -63,7 +63,7 @@
     top: 0;
     left: 0;
     
-    a {
+    .avatar {
         display: block;
         margin:0 auto;
         text-align: center;
@@ -77,12 +77,11 @@
         }        
     }
 
-    h1 {
+    .title {
       text-align: center;
       font-weight: bold;
       font-size: 40px;
       margin-top: 20px;
-      margin-bottom: 20px;
       color: #fff;
       text-shadow: 5px 5px 5px #000;
       animation: bounceInLeft 3s;
@@ -90,15 +89,56 @@
       animation-fill-mode: both;
     }
 
-    p {
+    .describe {
       text-align: center;
       font-size: 20px;
-      margin-top: 10px;
+      margin-top: 20px;
       color: #fff;
       opacity: .8;
       animation: bounceInRight 3s;
       animation-delay: 6s;
       animation-fill-mode: both;
+    }
+
+    .navcontainer {
+      width: 400px;
+      height: 80px;
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 50px;
+      overflow: hidden;
+
+      li {
+        float: left;
+        width: 40px;
+        height: 40px;
+        margin: 0 20px;
+        animation: bounceInUp 1s ease-out;
+        animation-fill-mode: both;
+      }
+
+      .icon {
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        opacity: .8;
+      }
+      
+      .nav_1 {
+        animation-delay: 9s;
+      }
+      .nav_2 {
+        animation-delay: 9.2s;
+      }
+      .nav_3 {
+        animation-delay: 9.5s;
+      }
+      .nav_4 {
+        animation-delay: 9.8s;
+      }
+      .nav_5 {
+        animation-delay: 10s;
+      }
     }
 }
 
@@ -216,5 +256,17 @@
 
   to {
     transform: none;
+  }
+}
+
+@keyframes bounceInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
