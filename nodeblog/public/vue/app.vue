@@ -1,12 +1,6 @@
 <template>
   <div class="main">
-    <div class="bg">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <span v-for="n in 5" class="bg"></span>
     <div class="overlay"></div>
     <div class="content">
         <a class="avatar" href="#"><img src="../img/avatar.png" alt="shenzm"></a>
