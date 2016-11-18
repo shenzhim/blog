@@ -16,7 +16,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 
-app.use(require('connect-history-api-fallback')())
+app.use(require('connect-history-api-fallback')({
+	rewrites: [{
+		from: '\/blog\/me.html', // 兼容老路由
+		to: '/index.html'
+	}]
+}))
 if (app.get('env') === 'development') {
 	var compiler = webpack(require('./public/webpack.config'))
 	var devMiddleware = require('webpack-dev-middleware')(compiler, {
