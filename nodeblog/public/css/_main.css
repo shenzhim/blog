@@ -185,6 +185,12 @@
   }
 }
 
+.main-leave-active {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 1s;
+}
+
 @keyframes imageAnimation {
     0% {
       opacity: 0;

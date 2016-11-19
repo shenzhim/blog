@@ -1,0 +1,57 @@
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+
+.blog {
+	position: fixed;
+  	top: 0;
+  	left: 0;
+  	height: 100%;
+  	width: 100%;
+
+  	.menubar {
+  		position: absolute;
+    	top: 0;
+    	height: 100%;
+    	width: 80px;
+    	background-color: #f0f0f0;
+    	user-select: none;
+
+    	ul {
+    		margin-top: 50px;
+    		text-align: center;
+    	}
+
+    	li {
+    		margin-top: 15px; 
+			margin-bottom: 15px;
+			border-bottom: 1px solid #ddd;
+
+			a {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+
+			.icon {
+				color: #000;
+				opacity: .9;
+				width: 38px;
+				height: 38px;
+			}
+    	}
+  	}
+
+  	.container {
+  		position: absolute;
+    	left: 80px;
+    	right: 0;
+    	height: 100%;
+    	border-left: 1px solid #ddd;
+    	background-color: #fff;
+  	}
+}
+
