@@ -47,9 +47,11 @@
     "compression": "^1.6.2",
     "cookie-parser": "~1.4.3",
     "express": "~4.14.0",
+    "marked": "^0.3.6",
     "pm2": "^2.0.12",
     "serve-favicon": "~2.3.0",
     "vue": "^2.0.1",
+    "vue-resource": "^1.0.3",
     "vue-router": "^2.0.1"
   }
 }

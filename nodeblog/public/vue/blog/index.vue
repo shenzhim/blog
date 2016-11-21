@@ -12,6 +12,9 @@
 		    	</ul>
 		    </div>
 		    <div class="container">
+		    	<div class="masthead">
+		    		<span>Shenzm </span><small>志敏的博客</small>
+		    	</div>
 		    	<router-view></router-view>
 		    </div>
 		  </div>

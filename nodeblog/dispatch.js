@@ -1,3 +1,3 @@
 module.exports = app => {
-	app.use('/home', require('./apps/home'));
+	app.use('/me', require('./apps/me'));
 };

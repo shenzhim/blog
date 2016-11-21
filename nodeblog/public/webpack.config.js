@@ -30,7 +30,7 @@ const config = {
     devtool: '#cheap-module-eval-source-map',
     entry: {
         app: [path.join(__dirname, './js/main.js'), path.join(__dirname, './js/sprite.js')],
-        vendor: ['vue', 'vue-router']
+        vendor: ['vue', 'vue-router', 'vue-resource']
     },
     output: {
         path: path.join(__dirname, './dist'),
