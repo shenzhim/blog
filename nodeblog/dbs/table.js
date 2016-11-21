@@ -1,4 +1,11 @@
-"use strict";
+const mysql = require('mysql');
+const pool = mysql.createPool({
+	connectionLimit: 20,
+	host: '127.0.0.1',
+	user: 'root',
+	password: '123456',
+	database: 'product'
+});
 
 module.exports = function(pool) {
 	return new function() {
