@@ -1,7 +1,10 @@
 var app = require('express')();
+var model = require('./model');
 
 app.get('/data', function(req, res, next) {
-	res.json("me test2");
+	model.getData().then(function(data) {
+		res.json(data);
+	}).catch(next)
 });
 
 module.exports = app;

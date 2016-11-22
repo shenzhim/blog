@@ -1,14 +1,12 @@
-const mysql = require('mysql');
+const mysql = require('mysql2/promise');
 const pool = mysql.createPool({
 	connectionLimit: 20,
 	host: 'localhost',
 	user: 'root',
 	password: '123456',
-	database: 'blog_prod'
+	database: 'nodeblog'
 });
 
-module.exports = function(table) {
-	return function() {
-		return require("./" + table)(pool);
-	}
+module.exports = {
+	data: require("./data")(pool)
 }
