@@ -18,7 +18,7 @@ export default {
 	},
 	beforeCreate() {
 		this.$http.get('/me/data').then((response) => {
-		    this.mehtml = response.data;
+		    this.mehtml = response.data.content;
 		}, (response) => {
 			alert("请求数据失败！")
 		});
