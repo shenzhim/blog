@@ -1,0 +1,46 @@
+.message {
+	max-width: 900px;
+	margin: 0 auto;
+	margin-top: 20px;
+	font-family: Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Monaco, monospace, Tahoma, STXihei, 华文细黑, STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, 宋体, Heiti, 黑体, sans-serif;
+
+	h2.title {
+		font-size: 30px;
+		line-height: 35px;
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+
+	.content {
+		text-align: left;
+    	font-size: 16px;
+    	line-height: 1.6;
+    	padding: 20px;
+    	overflow: auto;
+    	width: 100%;
+    	background-color: #fff;
+    	word-wrap: break-word;
+		
+		> *:first-child {
+			margin-top: 0 !important;
+		}
+
+    	h3 {
+    		position: relative;
+    		margin-top: 24px;
+    		margin-bottom: 16px;
+    		font-weight: bold;
+    		font-size: 24px;
+    		line-height: 1.43;
+    	}
+
+    	ul,ol {
+    		font-size: 16px;
+    		padding: 0;
+    		padding-left: 32px;
+    		margin-top: 0;
+    		margin-bottom: 16px;
+    		list-style-type: disc;
+    	}
+	}
+}

@@ -61,7 +61,7 @@
     	right: 0;
     	height: 100%;
     	border-left: 1px solid #ddd;
-    	background-color: #fff;
+      overflow: auto;
 
       .masthead {
         height: 50px;
