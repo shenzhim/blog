@@ -18,7 +18,6 @@
     	padding: 20px;
     	overflow: auto;
     	width: 100%;
-    	background-color: #fff;
     	word-wrap: break-word;
 		
 		> *:first-child {
@@ -40,7 +39,6 @@
     		padding-left: 32px;
     		margin-top: 0;
     		margin-bottom: 16px;
-    		list-style-type: disc;
     	}
 	}
 }
