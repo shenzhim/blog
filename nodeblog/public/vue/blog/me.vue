@@ -31,24 +31,13 @@ export default {
 </script>
 
 <style>
-  @import "../../css/message";
-
-  .container {
-  	background: linear-gradient(45deg, #b39c68, #a56365, #412e4c);
-
-  	.me {
-  		color: #fff;
-
-  		ul {
-  			list-style-type: disc;
-  			font-size: 20px;
-  			line-height: 2;
-  		}
-
-  		a {
-  			text-decoration: none;
-  			color: inherit;
-  		}
-  	}
-  }
+	@import "../../css/message";
+	
+	.me {
+		ul {
+			list-style-type: disc;
+			font-size: 20px;
+			line-height: 2;
+		}
+	}
 </style>

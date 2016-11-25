@@ -15,10 +15,10 @@
             <li class="nav_5"><a href="https://github.com/shenzhim" target="_blank"><svg class="icon icon-feed"><use xlink:href="#icon-feed"></use></svg></a></li>
           </ul>
           <router-link class="down" to="/blog/list"><svg class="icon icon-double-down"><use xlink:href="#icon-double-down"></use></svg></router-link>
+          <footer class="footer">
+            <span class="copyright">Copyright © 2016 by Shenzm.志敏</span>
+          </footer>
       </div>
-      <footer class="footer">
-        <span class="copyright">Copyright © 2016 by Shenzm.志敏</span>
-      </footer>
     </div>
   </transition>
 </template>

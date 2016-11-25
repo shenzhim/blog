@@ -1,14 +1,15 @@
 .message {
-	max-width: 900px;
+	max-width: 800px;
 	margin: 0 auto;
-	margin-top: 20px;
-	font-family: Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", Monaco, monospace, Tahoma, STXihei, 华文细黑, STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, 宋体, Heiti, 黑体, sans-serif;
-
-	h2.title {
+	padding-top: 90px;
+    text-size-adjust: 100%;
+	
+	.title {
 		font-size: 30px;
 		line-height: 35px;
 		margin-top: 20px;
 		margin-bottom: 10px;
+        color: rgb(85, 85, 85);
 	}
 
 	.content {
@@ -31,6 +32,7 @@
     		font-weight: bold;
     		font-size: 24px;
     		line-height: 1.43;
+            color: inherit;
     	}
 
     	ul,ol {
@@ -41,4 +43,10 @@
     		margin-bottom: 16px;
     	}
 	}
+}
+
+@media (max-width: 867px) {
+    .message {
+        width:100%
+    }
 }
