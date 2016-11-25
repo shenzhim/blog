@@ -42,14 +42,12 @@ export default {
 	            if(o <= c && !this.isHide) {
 	            	//下滚
 	            	this.isHide = true;
-	            } else if (this.isHide) {
+	            } else if (o > c && this.isHide) {
 	            	//上滚
 	            	this.isHide = false;
 	            }
 
-	            setTimeout(function(){
-	            	o = c;
-	            }, 0);	
+	            o = c;
 		    }, 500);
 		});
 	}
