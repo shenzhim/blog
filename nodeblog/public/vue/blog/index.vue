@@ -12,7 +12,7 @@
 		    	</ul>
 		    </div>
 		    <div class="container">
-		    	<div class="masthead">
+		    	<div class="masthead" :class="{'hide-masthead': isHide }">
 		    		<router-link to="/">Shenzm</router-link><small> 志敏的博客</small>
 		    	</div>
 		    	<router-view></router-view>
@@ -23,6 +23,36 @@
 
 <script>
 export default {
+	data() {
+		return {
+			isHide : false
+		}
+	},
+	created() {
+		var t,
+			o =0, 
+			c = 0;
+
+		window.addEventListener('scroll', () => {
+		    if(t) clearTimeout(t);
+		    
+		    t = setTimeout(() => {
+		    	c = window.scrollY;
+
+	            if(o <= c && !this.isHide) {
+	            	//下滚
+	            	this.isHide = true;
+	            } else if (this.isHide) {
+	            	//上滚
+	            	this.isHide = false;
+	            }
+
+	            setTimeout(function(){
+	            	o = c;
+	            }, 0);	
+		    }, 500);
+		});
+	}
 }
 </script>
 
