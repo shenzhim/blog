@@ -1,8 +1,15 @@
 <template>
 	<transition name="fade" mode="out-in">
-		<div class="list message">
-			<div class="content" v-html="content"></div>
-		  </div>
+		<div class="blog-list">
+			<ul>
+				<li v-for="item in list">
+				    <router-link :to="'/' + item.msgid">
+				    	<img src="">
+				    	<span>{{item.title}}</span>
+				    </router-link>
+				</li>
+			</ul>
+		</div>
 	</transition>
 </template>
 
@@ -14,12 +21,12 @@ Vue.use(VueResource);
 export default {
 	data() {
 		return {
-			content: ''
+			list: ''
 		}
 	},
 	beforeCreate() {
 		this.$http.get('/blog/list').then((response) => {
-		    this.content = response.data.content;
+		    this.list = response.data || [];
 		}, (response) => {
 			alert("请求数据失败^_^！！！");
 		});
@@ -27,3 +34,7 @@ export default {
 }
 </script>
 
+<style>
+	@import "../../css/list";
+
+</style>

@@ -4,7 +4,6 @@ module.exports = {
 	getList: function() {
 		return dbs.data.list(1, 'blog').then(function(result) {
 			var list = [];
-
 			if (result) {
 				result.forEach(function(o) {
 					if (o.sort > 0) {
