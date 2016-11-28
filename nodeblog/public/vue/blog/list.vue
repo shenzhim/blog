@@ -4,7 +4,7 @@
 			<ul>
 				<li v-for="item in list">
 				    <router-link :to="'/' + item.msgid">
-				    	<img src="http://t.named.cn/f/e20cbd14c8a0fb2e56e81b31b787812a.t358x236.fa.r8.b1x1x3x1xf3f3f3.lfbfbfb.jpg">
+				    	<img :src="item.img || defaultimg">
 				    	<div class="blog-title">
 				    		<h4 class="title">{{item.title}}</h4>
 				    		<div class="info">
@@ -27,7 +27,8 @@ Vue.use(VueResource);
 export default {
 	data() {
 		return {
-			list: ''
+			list: '',
+			defaultimg: 'data:image/png;base64,R0lGODlhFAAUAIAAAP///wAAACH5BAEAAAAALAAAAAAUABQAAAIRhI+py+0Po5y02ouz3rz7rxUAOw=='
 		}
 	},
 	beforeCreate() {

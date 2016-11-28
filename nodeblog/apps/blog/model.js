@@ -12,6 +12,7 @@ module.exports = {
 							title: JSON.parse(o.value).title,
 							msgid: o.bindid,
 							tag: o.tag.split(' · '),
+							img: 'https://og3nflyid.qnssl.com/320/240/random/55.jpg',
 							time: date.format(new Date(o.created), "yyyy年 MM月 dd日")
 						});
 					}
