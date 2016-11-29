@@ -16,9 +16,16 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+	if (/^\/blog\/message\.\d+$/.test(req.path)) {
+		return res.redirect('/blog/message/' + req.path.split('.')[1]);
+	}
+	next();
+});
+
 app.use(require('connect-history-api-fallback')({
 	rewrites: [{
-		from: '\/blog\/me.html', // 兼容老路由
+		from: /^\/blog\/me\.html$/, // 兼容老路由
 		to: '/index.html'
 	}]
 }))

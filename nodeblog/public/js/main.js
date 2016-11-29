@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from '../vue/app';
 import Blog from '../vue/blog/index';
+import Message from '../vue/blog/message';
 import Me from '../vue/blog/me';
 import List from '../vue/blog/list';
 import QQ404 from '../vue/qq404';
@@ -25,6 +26,9 @@ new Vue({
 			}, {
 				path: 'list',
 				component: List
+			}, {
+				path: 'message/:id',
+				component: Message
 			}]
 		}, {
 			path: '*',

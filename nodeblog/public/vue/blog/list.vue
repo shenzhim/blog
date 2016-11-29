@@ -3,7 +3,7 @@
 		<div class="blog-list">
 			<ul>
 				<li v-for="item in list">
-				    <router-link :to="'/' + item.msgid">
+				    <router-link :to="'/blog/message/' + item.msgid">
 				    	<img :src="item.img || defaultimg">
 				    	<div class="blog-title">
 				    		<h4 class="title">{{item.title}}</h4>
