@@ -62,7 +62,7 @@
     }
 }
 
-@media (min-width: 1200px) and (max-width: 1350px) {
+@media (min-width: 1200px) and (max-width: 1300px) {
     .blog-list {
         li {
 			width: 340px;
@@ -70,10 +70,18 @@
     }
 }
 
-@media (min-width: 1350px){
+@media (min-width: 1300px) and (max-width: 1400px) {
 	.blog-list {
         li {
-			width: 360px;
+			width: 370px;
 		}
+    }
+}
+
+@media (min-width: 1400px){
+    .blog-list {
+        li {
+            width: 390px;
+        }
     }
 }
