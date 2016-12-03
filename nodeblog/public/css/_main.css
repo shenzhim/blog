@@ -34,22 +34,22 @@
 
   .bg:nth-child(2) {
     background-image: url(../img/bg_2.jpg);
-    animation: imageAnimation 50s linear infinite 10s;
+    animation: imageAnimation 30s linear infinite 6s;
   }
 
   .bg:nth-child(3) {
     background-image: url(../img/bg_3.jpg);
-    animation: imageAnimation 50s linear infinite 20s;
+    animation: imageAnimation 30s linear infinite 12s;
   }
 
   .bg:nth-child(4) {
     background-image: url(../img/bg_4.jpg);
-    animation: imageAnimation 50s linear infinite 30s;
+    animation: imageAnimation 30s linear infinite 18s;
   }
 
   .bg:nth-child(5) {
     background-image: url(../img/bg_5.jpg);
-    animation: imageAnimation 50s linear infinite 40s;
+    animation: imageAnimation 30s linear infinite 24s;
   }
 
   .content {
@@ -99,7 +99,7 @@
       color: #fff;
       opacity: .8;
       animation: bounceInRight 3s;
-      animation-delay: 6s;
+      animation-delay: 5s;
       animation-fill-mode: both;
     }
 
@@ -140,23 +140,23 @@
       }
 
       .nav_1 {
-        animation-delay: 9s;
+        animation-delay: 8s;
       }
 
       .nav_2 {
-        animation-delay: 9.2s;
+        animation-delay: 8.2s;
       }
 
       .nav_3 {
-        animation-delay: 9.5s;
+        animation-delay: 8.5s;
       }
 
       .nav_4 {
-        animation-delay: 9.8s;
+        animation-delay: 8.8s;
       }
 
       .nav_5 {
-        animation-delay: 10s;
+        animation-delay: 9s;
       }
     }
 
@@ -170,7 +170,7 @@
         width: 50px;
         height: 80px;
         opacity: 0;
-        animation: downAnimation 2s ease infinite 11s;
+        animation: downAnimation 2s ease infinite 10s;
       }
     }
   }
