@@ -13,7 +13,7 @@ module.exports = {
 							title: o.value.title,
 							msgid: o.bindid,
 							tag: o.tag.split(' · '),
-							img: o.value.img,
+							img: o.value.img + '?imageView2/2/w/320/h/240/interlace/1/q/60',
 							time: date.format(new Date(o.created), "yyyy年 MM月 dd日")
 						});
 					}
