@@ -9,7 +9,7 @@ module.exports = {
 				result.forEach(function(o) {
 					if (o.sort > 0) {
 						o.value = JSON.parse(o.value);
-						list.push({
+						list.unshift({
 							title: o.value.title,
 							msgid: o.bindid,
 							tag: o.tag.split(' · '),
