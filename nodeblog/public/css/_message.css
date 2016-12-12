@@ -46,7 +46,6 @@
         }
 
         pre {
-            border: 1px solid #ddd;
             margin-bottom: 16px;
         }
 
@@ -56,6 +55,18 @@
             background: #fefbec;
             color: #6e6b5e;
             padding: 0.5em;
+            border: 1px solid #ddd;
+            margin: 0;
+        }
+
+        code {
+            border: 1px solid #ddd;
+            background: #f6f6f6;
+            padding: 3px;
+            margin:0 5px;
+            border-radius: 3px;
+            font-size: 16px;
+            color: #bf616a;
         }
 
     	ul,ol {
