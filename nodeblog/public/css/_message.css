@@ -36,6 +36,28 @@
             color: inherit;
     	}
 
+        h4,h5 {
+            font-size: 16px;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            color: inherit;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        pre {
+            border: 1px solid #ddd;
+            margin-bottom: 16px;
+        }
+
+        pre code {
+            display: block;
+            overflow-x: auto;
+            background: #fefbec;
+            color: #6e6b5e;
+            padding: 0.5em;
+        }
+
     	ul,ol {
     		font-size: 16px;
     		padding: 0;
@@ -57,6 +79,11 @@
         strong {
             color: #2f2f2f;
         }
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
 	}
 }
 
@@ -64,4 +91,4 @@
     .message {
         width:100%
     }
-}
+}   

@@ -33,4 +33,5 @@ export default {
 
 <style>
 	@import "../../css/message";
+	@import "../../css/highlight";
 </style>
