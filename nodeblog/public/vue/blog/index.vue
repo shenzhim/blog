@@ -53,7 +53,3 @@ export default {
 	}
 }
 </script>
-
-<style>
-  @import "../../css/blog";
-</style>

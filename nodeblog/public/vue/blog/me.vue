@@ -31,8 +31,6 @@ export default {
 </script>
 
 <style>
-	@import "../../css/message";
-	
 	.me {
 		ul {
 			list-style-type: disc;

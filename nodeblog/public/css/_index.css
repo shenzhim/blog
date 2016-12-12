@@ -3,6 +3,10 @@
 @import "reset";
 @import "main";
 @import "icon";
+@import "blog";
+@import "list";
+@import "message";
+@import "highlight";
 
 .hide {
   display: none;

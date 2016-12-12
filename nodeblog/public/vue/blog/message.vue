@@ -30,8 +30,3 @@ export default {
 	}
 }
 </script>
-
-<style>
-	@import "../../css/message";
-	@import "../../css/highlight";
-</style>

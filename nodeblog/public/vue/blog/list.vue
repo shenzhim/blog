@@ -40,8 +40,3 @@ export default {
 	}
 }
 </script>
-
-<style>
-	@import "../../css/list";
-
-</style>
