@@ -7,6 +7,10 @@ logs
 *.log
 npm-debug.log*
 
+# deploy
+*.tar
+*.tar.gz
+
 # Runtime data
 pids
 *.pid
