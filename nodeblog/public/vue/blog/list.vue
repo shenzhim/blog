@@ -32,6 +32,7 @@ export default {
 		}
 	},
 	beforeCreate() {
+		scrollTo(0, 0);
 		this.$http.get('/blog/list').then((response) => {
 		    this.list = response.data || [];
 		}, (response) => {

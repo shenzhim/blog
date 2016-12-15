@@ -13,7 +13,7 @@
 		    </div>
 		    <div class="container">
 		    	<div class="masthead" :class="{'hide-masthead': isHide }">
-		    		<router-link to="/">Shenzm</router-link><small> 志敏的博客</small>
+		    		<router-link to="/blog/list">Shenzm</router-link><small> 志敏的博客</small>
 		    	</div>
 		    	<router-view></router-view>
 		    </div>

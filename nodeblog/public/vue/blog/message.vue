@@ -27,6 +27,7 @@ export default {
 		}
 	},
 	beforeCreate() {
+		scrollTo(0, 0);
 		this.$http.get(`/message/data?msgid=${this.$route.params.id}`).then((response) => {
 			this.title = response.data.title;
 		    this.content = response.data.content;
