@@ -98,6 +98,20 @@
             height: 24px;
         }
 	}
+    
+    .page {
+        overflow: hidden;
+        padding: 20px;
+
+        .pre {
+            float: left;    
+        }
+
+        .next {
+            float: right;
+        }
+    }
+    
 }
 
 @media (max-width: 867px) {

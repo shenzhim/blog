@@ -3,6 +3,10 @@
 		<div class="message">
 			<h2 class="title">{{title}}</h2>
 			<div class="content" v-html="content"></div>
+			<div class="page">
+				<a v-if="preid" class="pre" :href="'/blog/message/' + preid"><svg class="icon icon-align-left"><use xlink:href="#icon-align-left"></use></svg>{{pretitle}}</a>
+				<a v-if="nextid" class="next" :href="'/blog/message/' + nextid">{{nexttitle}}<svg class="icon icon-align-left"><use xlink:href="#icon-align-left"></use></svg></a>
+			</div>
 			<!-- 多说评论框 start -->
 			<div class="ds-thread" :data-thread-key="$route.params.id" :data-title="title" :data-url="url"></div>
 			<!-- 多说评论框 end -->
@@ -23,14 +27,21 @@ export default {
 		return {
 			title: '',
 			content: '',
+			preid: '',
+			pretitle: '',
+			nextid: '',
+			nexttitle: '',
 			url: location.href
 		}
 	},
 	beforeCreate() {
-		scrollTo(0, 0);
 		this.$http.get(`/message/data?msgid=${this.$route.params.id}`).then((response) => {
 			this.title = response.data.title;
 		    this.content = response.data.content;
+		    this.preid = response.data.preid;
+		    this.pretitle = response.data.pretitle;
+		    this.nextid = response.data.nextid;
+		    this.nexttitle = response.data.nexttitle;
 		    document.title =`${this.title} - 志敏的博客`;
 		}, (response) => {
 			alert("请求数据失败！")

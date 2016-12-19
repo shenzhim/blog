@@ -12,7 +12,11 @@ module.exports = {
 
 			return {
 				title: result.title,
-				content: markdown(result.content)
+				content: markdown(result.content),
+				preid: result.preid,
+				pretitle: result.pretitle,
+				nextid: result.nextid,
+				nexttitle: result.nexttitle
 			}
 		});
 	}
