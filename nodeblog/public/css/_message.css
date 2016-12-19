@@ -102,13 +102,52 @@
     .page {
         overflow: hidden;
         padding: 20px;
+        
+        a {
+            border: 1px solid rgba(227, 113, 0, .4);
+            background-color: rgba(227, 113, 0, .04);
+            color: #e37100;
+        }
+
+        a:hover {
+            color: #fff;
+            background-color: rgba(227, 113, 0, 1);
+        }
+
+        .page-left {
+            float: left;
+        }
+
+        .page-right {
+            float: right;
+        }        
 
         .pre {
-            float: left;    
+            float: left;
+            height: 45px;
+            width: 45px;
+            position: relative;
         }
 
         .next {
             float: right;
+            height: 45px;
+            width: 45px;
+            position: relative;
+        }
+
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .ti {
+            height: 45px;
+            line-height: 45px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
     }
     

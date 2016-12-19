@@ -4,8 +4,14 @@
 			<h2 class="title">{{title}}</h2>
 			<div class="content" v-html="content"></div>
 			<div class="page">
-				<a v-if="preid" class="pre" :href="'/blog/message/' + preid"><svg class="icon icon-align-left"><use xlink:href="#icon-align-left"></use></svg>{{pretitle}}</a>
-				<a v-if="nextid" class="next" :href="'/blog/message/' + nextid">{{nexttitle}}<svg class="icon icon-align-left"><use xlink:href="#icon-align-left"></use></svg></a>
+				<a v-if="preid" :href="'/blog/message/' + preid" class="page-left">
+					<span class="pre"><svg class="icon icon-point-left"><use xlink:href="#icon-point-left"></use></svg></span>
+					<span class="ti">{{pretitle}}</span>
+				</a>
+				<a v-if="nextid" :href="'/blog/message/' + nextid" class="page-right">
+					<span class="ti">{{nexttitle}}</span>
+					<span class="next" ><svg class="icon icon-point-right"><use xlink:href="#icon-point-right"></use></svg></span>
+				</a>
 			</div>
 			<!-- 多说评论框 start -->
 			<div class="ds-thread" :data-thread-key="$route.params.id" :data-title="title" :data-url="url"></div>
