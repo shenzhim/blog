@@ -9,7 +9,6 @@
 		line-height: 35px;
 		margin-top: 20px;
 		margin-bottom: 10px;
-        padding-left: 15px;
         color: rgb(85, 85, 85);
 	}
 
@@ -91,6 +90,10 @@
 
         strong {
             color: #2f2f2f;
+        }
+
+        img {
+            max-width: 100%;
         }
 
         .emoji {

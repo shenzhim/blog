@@ -34,9 +34,9 @@ export default {
 			title: '',
 			content: '',
 			preid: '',
-			pretitle: '',
+			pretitle: '上一篇',
 			nextid: '',
-			nexttitle: '',
+			nexttitle: '下一篇',
 			url: location.href
 		}
 	},
@@ -45,9 +45,11 @@ export default {
 			this.title = response.data.title;
 		    this.content = response.data.content;
 		    this.preid = response.data.preid;
-		    this.pretitle = response.data.pretitle;
 		    this.nextid = response.data.nextid;
-		    this.nexttitle = response.data.nexttitle;
+		    if (window.outerWidth > 867) {
+		    	this.pretitle = response.data.pretitle;
+		    	this.nexttitle = response.data.nexttitle;
+		    }
 		    document.title =`${this.title} - 志敏的博客`;
 		}, (response) => {
 			alert("请求数据失败！")
