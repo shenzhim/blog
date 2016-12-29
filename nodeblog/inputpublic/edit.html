@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Shenzm_发布文章</title>
+    <link rel="stylesheet" href="/inputpublic/css/style.css" />
+    <link rel="stylesheet" href="/inputpublic/css/editormd.css" />
+    <script src="/inputpublic/js/jquery.min.js"></script>
+    <script src="/inputpublic/js/editormd.js"></script>
+    <script type="text/javascript">
+    var editor,
+        userid,
+        messageid;
+    $(function() {
+        $.ajax({
+            type: "POST",
+            url: "/xhr/session",
+            contentType: "application/json;",
+            data: JSON.stringify({
+                method: "sync"
+            }),
+            dataType: "json",
+            success: function(result) {
+                if (result.result && !result.result.error) {
+                    if (result.result.id) {
+                        $("#layout").show();
+                        userid = result.result.id;
+                    } else {
+                        $("#layout").hide();
+                        localStorage.setItem("token", result.result.token);
+                        window.location.href = "/login.html";
+                    }
+                } else {
+                    alert("session fail");
+                }
+            },
+            error: function(message) {
+                alert("session error");
+            }
+        });
+
+        editor = editormd("test-editormd", {
+            width: "90%",
+            height: 888,
+            path: "/lib/",
+            htmlDecode: "style,script,iframe",
+            placeholder: "写点什么吧。。。",
+            imageUpload: true,
+            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL: "/rest/storage/attachment",
+            emoji: true,
+            taskList: true,
+            flowChart: true,
+            sequenceDiagram: true
+        });
+
+        $("#submitbtn").click(function() {
+            var content = editor.getMarkdown();
+            if (messageid) {
+                var title = $("#title").val();
+                if (!title) {
+                    alert("请输入标题！");
+                    return;
+                }
+                if (!content) {
+                    alert("请输入内容！");
+                    return;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/xhr/" + messageid + "/message",
+                    contentType: "application/json;",
+                    data: JSON.stringify({
+                        method: "edit",
+                        params: [{
+                            title: title,
+                            content: content
+                        }]
+                    }),
+                    dataType: "json",
+                    success: function(result) {
+                        if (result.result && Number(result.result) > 0) {
+                            alert("编辑成功！");
+                        } else {
+                            alert("编辑失败！");
+                        }
+                    },
+                    error: function(message) {
+                        alert("submit error");
+                    }
+                });
+            } else {
+                // 简介
+                 $.ajax({
+                    type: "POST",
+                    url: "/xhr/1/user",
+                    contentType: "application/json;",
+                    data: JSON.stringify({
+                        method: "update",
+                        params: [{
+                            intro: content
+                        }]
+                    }),
+                    dataType: "json",
+                    success: function(result) {
+                        if (result && result.error) {
+                            alert("编辑失败！");
+                        } else {
+                            alert("编辑成功！");
+                        }
+                    },
+                    error: function(message) {
+                        alert("submit error");
+                    }
+                });
+            }
+        });
+
+        // 检索
+        $("#searchbtn").click(function() {
+            var msgid = $("#msgid").val();
+            if (!msgid) return;
+
+            $.ajax({
+                type: "get",
+                url: "/rest/object/get." + msgid + ".block",
+                contentType: "application/json;",
+                dataType: "json",
+                success: function(result) {
+                    messageid = result.message.id;
+                    $("#title").val(result.message.title);
+                    editor.setMarkdown(result.message.content);
+                },
+                error: function(message) {
+                    alert("edit error");
+                }
+            });
+        })
+
+        // 简介
+        $("#summary").click(function() {
+            $.ajax({
+                type: "get",
+                url: "/rest/object/get.1.base",
+                contentType: "application/json;",
+                dataType: "json",
+                success: function(result) {
+                    messageid = undefined;
+                    editor.setMarkdown(result.user.intro);
+                },
+                error: function(message) {
+                    alert("edit error");
+                }
+            });
+        })
+    });
+    </script>
+</head>
+
+<body>
+    <div id="layout" style="display:none;">
+        <div style="margin-left:5%;margin-top: 2%;">
+            <div>
+                <span>博客：</span>
+                <input type="text" id="msgid" style="width:80px;height:30px;" />
+                <input type="submit" id="searchbtn" class="btn" value="检索" style="width:80px;" />
+                <input type="submit" id="summary" class="btn" value="简介" style="width:80px;" />
+            </div>
+            <div>
+                <span>标题：</span>
+                <input type="text" id="title" style="width:800px;height:30px;" />
+                <input type="submit" id="submitbtn" class="btn" value="提交" style="width:80px;" />
+            </div>
+        </div>
+        <br/>
+        <div id="test-editormd">
+            <textarea style="display:none;"></textarea>
+        </div>
+    </div>
+</body>
+
+</html>

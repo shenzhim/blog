@@ -23,6 +23,20 @@ app.use((req, res, next) => {
 	next();
 });
 
+app.get('/inputpublic/*', function(req, res, next) {
+	var options = {
+		root: __dirname,
+		dotfiles: 'deny'
+	};
+
+	var fileName = req.originalUrl.split('?')[0];
+	res.sendFile(fileName, options, function(err) {
+		if (err) {
+			res.status(err.status).end();
+		}
+	});
+});
+
 app.use(require('connect-history-api-fallback')({
 	rewrites: [{
 		from: /^\/blog\/me\.html$/, // 兼容老路由
