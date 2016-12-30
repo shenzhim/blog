@@ -12,11 +12,11 @@
             <li class="nav_2"><router-link to="/blog/list"><svg class="icon icon-align-left"><use xlink:href="#icon-align-left"></use></svg></router-link></li>
             <li class="nav_3"><a href="https://github.com/shenzhim" target="_blank"><svg class="icon icon-github"><use xlink:href="#icon-github"></use></svg></a></li>
             <li class="nav_4"><a href="mailto:szmalq@163.com"><svg class="icon icon-envelope-square"><use xlink:href="#icon-envelope-square"></use></svg></a></li>
-            <li class="nav_5"><a href="https://github.com/shenzhim" target="_blank"><svg class="icon icon-feed"><use xlink:href="#icon-feed"></use></svg></a></li>
+            <li class="nav_5"><a href="/rss" target="_blank"><svg class="icon icon-feed"><use xlink:href="#icon-feed"></use></svg></a></li>
           </ul>
           <router-link class="down" to="/blog/list"><svg class="icon icon-double-down"><use xlink:href="#icon-double-down"></use></svg></router-link>
           <footer class="footer">
-            <span class="copyright">Copyright © 2016 by Shenzm.志敏</span>
+            <span class="copyright">Copyright © 2017 by Shenzm.志敏</span>
           </footer>
       </div>
     </div>

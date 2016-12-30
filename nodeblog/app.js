@@ -16,13 +16,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 
-app.use((req, res, next) => {
-	if (/^\/blog\/message\.\d+$/.test(req.path)) {
-		return res.redirect('/blog/message/' + req.path.split('.')[1]);
-	}
-	next();
-});
-
+// 编辑功能
 app.get('/inputpublic/*', function(req, res, next) {
 	var options = {
 		root: __dirname,
@@ -37,6 +31,16 @@ app.get('/inputpublic/*', function(req, res, next) {
 	});
 });
 
+// rss
+app.get('/rss', require('./apps/rss'));
+
+// 兼容老路由
+app.use((req, res, next) => {
+	if (/^\/blog\/message\.\d+$/.test(req.path)) {
+		return res.redirect('/blog/message/' + req.path.split('.')[1]);
+	}
+	next();
+});
 app.use(require('connect-history-api-fallback')({
 	rewrites: [{
 		from: /^\/blog\/me\.html$/, // 兼容老路由

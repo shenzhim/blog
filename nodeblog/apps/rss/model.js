@@ -1,8 +1,7 @@
 const dbs = require('../../dbs');
-const date = require("../../utils/date");
 
 module.exports = {
-	getList: function() {
+	getRssData: function() {
 		return dbs.data.list(1, 'blog').then(function(result) {
 			const list = [];
 			if (result) {
@@ -12,10 +11,8 @@ module.exports = {
 						list.unshift({
 							title: o.value.title,
 							intro: o.value.intro,
-							msgid: o.bindid,
-							tag: o.tag.split(' · '),
-							img: o.value.img + '?imageView2/2/w/320/h/240/interlace/1/q/60',
-							time: date.format(new Date(o.created), "yyyy年 MM月 dd日")
+							bindid: o.bindid,
+							date: new Date(o.created)
 						});
 					}
 				})
