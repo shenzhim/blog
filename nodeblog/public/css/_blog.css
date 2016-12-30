@@ -37,7 +37,7 @@
   				height: 100%;
           width: 100%;
 
-          &:hover,&.router-link-active {
+          &:hover {
             background-color: #e37100;
           }
   			}
