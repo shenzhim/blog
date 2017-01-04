@@ -9,89 +9,87 @@
     <script src="/inputpublic/js/editormd.js"></script>
     <script type="text/javascript">
     var editor;
-    var userid;
+
+    var queryString = function() {
+        let vars = {},
+            hash,
+            i,
+            hashes = window.location.search.slice(1).split('&');
+
+        for (i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+
     $(function() {
+        var qs = queryString();
         $.ajax({
             type: "POST",
-            url: "/xhr/session",
-            contentType: "application/json;",
-            data: JSON.stringify({
-                method: "sync"
-            }),
-            dataType: "json",
+            url: "/auth/login",
+            data: {
+                token: qs.token
+            }
             success: function(result) {
-                if (result.result && !result.result.error) {
-                    if (result.result.id) {
+                if (result.res) {
                         $("#layout").show();
-                        userid = result.result.id;
-                    } else {
-                        $("#layout").hide();
-                        localStorage.setItem("token", result.result.token);
-                        window.location.href = "/login.html";
-                    }
+
+                        editor = editormd("test-editormd", {
+                            width: "90%",
+                            height: 888,
+                            path: "/inputpublic/lib/",
+                            htmlDecode: "style,script,iframe",
+                            placeholder: "写点什么吧。。。",
+                            imageUpload:true,
+                            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                            imageUploadURL:"/rest/storage/attachment",
+                            emoji: true,
+                            taskList: true,
+                            flowChart: true,
+                            sequenceDiagram: true
+                        });
+
+                        $("#submitbtn").click(function() {
+                            var title = $("#title").val();
+                            var content = editor.getMarkdown();
+
+                            if (!title) {
+                                alert("请输入标题！");
+                                return;
+                            }
+                            
+                            if (!content) {
+                                alert("请输入内容！");
+                                return;
+                            }
+
+                            $.ajax({
+                                type: "POST",
+                                url: "/blog/postblog",
+                                data: {
+                                    title: title,
+                                    content: content,
+                                },
+                                success: function(result) {
+                                    if (result.result && !result.result.error) {
+                                        alert("发布成功！");
+                                    } else {
+                                        alert("发布失败！");
+                                    }
+                                },
+                                error: function(message) {
+                                    alert("submit error");
+                                }
+                            });
+                        });
                 } else {
-                    alert("session fail");
+                    alert("login fail");
                 }
             },
             error: function(message) {
-                alert("session error");
+                alert("login error");
             }
-        });
-
-        editor = editormd("test-editormd", {
-            width: "90%",
-            height: 888,
-            path: "/inputpublic/lib/",
-            htmlDecode: "style,script,iframe",
-            placeholder: "写点什么吧。。。",
-            imageUpload:true,
-            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL:"/rest/storage/attachment",
-            emoji: true,
-            taskList: true,
-            flowChart: true,
-            sequenceDiagram: true
-        });
-
-        $("#submitbtn").click(function() {
-            var title = $("#title").val();
-            var content = editor.getMarkdown();
-
-            if (!title) {
-                alert("请输入标题！");
-                return;
-            }
-            
-            if (!content) {
-                alert("请输入内容！");
-                return;
-            }
-
-            $.ajax({
-                type: "POST",
-                url: "/xhr/" + userid + "/blog",
-                contentType: "application/json;",
-                data: JSON.stringify({
-                    method: "post",
-                    params: [{
-                        title: title,
-                        content: content,
-                        userid: userid
-                    }]
-                }),
-                dataType: "json",
-                success: function(result) {
-                    if (result.result && !result.result.error) {
-                        alert("发布成功！");
-                        window.location.href = "/blog/message." + result.result;
-                    } else {
-                        alert("发布失败！");
-                    }
-                },
-                error: function(message) {
-                    alert("submit error");
-                }
-            });
         });
     });
     </script>
