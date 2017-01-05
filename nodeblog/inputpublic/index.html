@@ -9,10 +9,24 @@
         .item {
             margin-bottom: 5px;
         }
+        
+        span.btn {
+            position: relative;
+            font-size: 12px;
+            color: #000;
+        }
 
-        .btn {
+        .btn:hover {
             color: #fff;
             background: #e37100; 
+        }
+
+        #postimg {
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer
         }
     </style>
     <script src="/inputpublic/js/jquery.min.js"></script>
@@ -62,13 +76,22 @@
 
                         $("#submitbtn").click(function() {
                             var title = $("#title").val();
+                            var tag = $("#tag").val();
+                            var summary = $("#summary").val();
                             var content = editor.getMarkdown();
 
                             if (!title) {
                                 alert("请输入标题！");
                                 return;
                             }
-                            
+                            if (!tag) {
+                                alert("请输入标签！");
+                                return;
+                            }
+                            if (!summary) {
+                                alert("请输入简介！");
+                                return;
+                            }
                             if (!content) {
                                 alert("请输入内容！");
                                 return;
@@ -79,7 +102,9 @@
                                 url: "/blog/postblog",
                                 data: {
                                     title: title,
-                                    content: content,
+                                    tag: tag,
+                                    summary: summary,
+                                    content: content
                                 },
                                 success: function(result) {
                                     if (result.result && !result.result.error) {
@@ -111,8 +136,8 @@
             <div class="item">
                 <span>标题：</span>
                 <input type="text" id="title" style="width:300px;height:30px;" />
-                <input type="submit" id="submitbtn" class="btn" value="发布" style="width:80px;" />
-                <input type="submit" class="btn" value="背景图上传" style="width:80px;" />
+                <input type="button" id="submitbtn" class="btn" value="发布" style="width:80px;" />
+                <span class="btn">上传背景图<input id="postimg" type="file" name="file" id=""></span>
             </div>
             <div class="item">
                 <span>标签：</span>
