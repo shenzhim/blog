@@ -5,6 +5,16 @@
     <title>Shenzm_发布文章</title>
     <link rel="stylesheet" href="/inputpublic/css/style.css" />
     <link rel="stylesheet" href="/inputpublic/css/editormd.css" />
+    <style type="text/css">
+        .item {
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            color: #fff;
+            background: #e37100; 
+        }
+    </style>
     <script src="/inputpublic/js/jquery.min.js"></script>
     <script src="/inputpublic/js/editormd.js"></script>
     <script type="text/javascript">
@@ -30,7 +40,7 @@
             url: "/auth/login",
             data: {
                 token: qs.token
-            }
+            },
             success: function(result) {
                 if (result.res) {
                         $("#layout").show();
@@ -98,10 +108,19 @@
 <body>
     <div id="layout" style="display:none;">
         <div style="margin-left:5%;margin-top: 2%;">
-            <div>
+            <div class="item">
                 <span>标题：</span>
-                <input type="text" id="title" style="width:800px;height:30px;" />
+                <input type="text" id="title" style="width:300px;height:30px;" />
                 <input type="submit" id="submitbtn" class="btn" value="发布" style="width:80px;" />
+                <input type="submit" class="btn" value="背景图上传" style="width:80px;" />
+            </div>
+            <div class="item">
+                <span>标签：</span>
+                <input type="text" id="tag" style="width:300px;height:30px;" />
+            </div>
+            <div class="item">
+                <span style="vertical-align: top;">概要：</span>
+                <textarea id="summary" style="width:500px;height:100px;"></textarea>
             </div>
         </div>
         <br/>

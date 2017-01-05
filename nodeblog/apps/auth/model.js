@@ -13,7 +13,7 @@ module.exports = {
 				})
 			};
 			return {
-				result: res
+				res: res
 			};
 		});
 	}

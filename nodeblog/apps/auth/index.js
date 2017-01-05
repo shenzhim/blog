@@ -1,8 +1,8 @@
 var app = require('express')();
 var model = require('./model');
 
-app.get('/login', function(req, res, next) {
-	model.auth(req.query.token).then(function(data) {
+app.post('/login', function(req, res, next) {
+	model.auth(req.body.token).then(function(data) {
 		res.json(data);
 	}).catch(next)
 });
