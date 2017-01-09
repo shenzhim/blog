@@ -138,6 +138,9 @@
                 <input type="text" id="title" style="width:300px;height:30px;" />
                 <input type="button" id="submitbtn" class="btn" value="发布" style="width:80px;" />
                 <span class="btn">上传背景图<input id="postimg" type="file" name="file" id=""></span>
+                <form method="post" action="/blog/postblog" enctype="multipart/form-data">
+                    <input type=file accept="image/*" name="file" value="upload files">
+                </form>
             </div>
             <div class="item">
                 <span>标签：</span>
