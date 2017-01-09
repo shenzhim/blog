@@ -26,10 +26,13 @@
             right: 0;
             top: 0;
             opacity: 0;
-            cursor: pointer
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
         }
     </style>
     <script src="/inputpublic/js/jquery.min.js"></script>
+    <script src="/inputpublic/js/upload.js"></script>
     <script src="/inputpublic/js/editormd.js"></script>
     <script type="text/javascript">
     var editor;
@@ -118,6 +121,15 @@
                                 }
                             });
                         });
+
+                        $('#postimg').change(function(){
+                            $(this).uploadFile({
+                                url: '/blog/postimg',//上传路径
+                                success: function(data, $element) {//上传成功
+                                   alert("上传成功");
+                                }
+                            })
+                        });
                 } else {
                     alert("login fail");
                 }
@@ -127,6 +139,7 @@
             }
         });
     });
+
     </script>
 </head>
 
@@ -137,10 +150,7 @@
                 <span>标题：</span>
                 <input type="text" id="title" style="width:300px;height:30px;" />
                 <input type="button" id="submitbtn" class="btn" value="发布" style="width:80px;" />
-                <span class="btn">上传背景图<input id="postimg" type="file" name="file" id=""></span>
-                <form method="post" action="/blog/postblog" enctype="multipart/form-data">
-                    <input type=file accept="image/*" name="file" value="upload files">
-                </form>
+                <span class="btn">上传背景图<input id="postimg" type="file" name="file" accept="image/*" /></span>
             </div>
             <div class="item">
                 <span>标签：</span>

@@ -7,4 +7,8 @@ app.get('/list', function(req, res, next) {
 	}).catch(next)
 });
 
+app.post('/postimg', function(req, res, next) {
+	res.end("{'code':'1','id':'imgID','src':'test.jpg'}")
+});
+
 module.exports = app;
