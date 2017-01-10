@@ -10,7 +10,12 @@ app.get('/list', function(req, res, next) {
 });
 
 app.post('/postimg', multipartMiddleware, function(req, res, next) {
-	console.log(req.body, req.files);
+	var files = req.files && req.files.imgfile || [];
+	if (Array.isArray(files)) {
+		files = [files];
+	}
+
+
 	res.end("{'code':'1','id':'imgID','src':'test.jpg'}")
 });
 
