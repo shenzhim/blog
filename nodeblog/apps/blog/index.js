@@ -1,5 +1,6 @@
 var app = require('express')();
 var model = require('./model');
+var qiniu = require('../../utils/uploadqiniu');
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 
@@ -10,13 +11,16 @@ app.get('/list', function(req, res, next) {
 });
 
 app.post('/postimg', multipartMiddleware, function(req, res, next) {
-	var files = req.files && req.files.imgfile || [];
-	if (Array.isArray(files)) {
-		files = [files];
+	if (req.files && req.files.imgfile) {
+		qiniu.uploadFile({
+			key: req.files.imgfile.originalFilename,
+			filePath: req.files.imgfile.path
+		}).then(function(r){
+			res.end(JSON.stringify(r));
+		}).catch(function(){
+			res.end(JSON.stringify({}));
+		});
 	}
-
-
-	res.end("{'code':'1','id':'imgID','src':'test.jpg'}")
 });
 
 module.exports = app;
