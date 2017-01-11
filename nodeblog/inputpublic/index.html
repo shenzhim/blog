@@ -54,14 +54,15 @@
         var qs = queryString();
         $.ajax({
             type: "POST",
-            url: "/auth/login",
+            url: "/user/auth",
             data: {
                 token: qs.token
             },
             success: function(result) {
                 if (result.res) {
+                        document.cookie = 'blogtoken=' + qs.token + ";path=/";
+                        
                         $("#layout").show();
-
                         editor = editormd("test-editormd", {
                             width: "90%",
                             height: 888,
@@ -82,35 +83,24 @@
                             var tag = $("#tag").val();
                             var summary = $("#summary").val();
                             var content = editor.getMarkdown();
+                            var img = $('#preview').attr('src');
 
-                            if (!title) {
-                                alert("请输入标题！");
+                            if (!title || !tag || !summary || !content || !img) {
+                                alert("请检查是否有缺失内容！");
                                 return;
                             }
-                            if (!tag) {
-                                alert("请输入标签！");
-                                return;
-                            }
-                            if (!summary) {
-                                alert("请输入简介！");
-                                return;
-                            }
-                            if (!content) {
-                                alert("请输入内容！");
-                                return;
-                            }
-
                             $.ajax({
                                 type: "POST",
                                 url: "/blog/postblog",
                                 data: {
                                     title: title,
                                     tag: tag,
+                                    img: img,
                                     summary: summary,
                                     content: content
                                 },
                                 success: function(result) {
-                                    if (result.result && !result.result.error) {
+                                    if (result && result.res === 'success') {
                                         alert("发布成功！");
                                     } else {
                                         alert("发布失败！");

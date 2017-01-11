@@ -22,5 +22,9 @@ module.exports = {
 			};
 			return list;
 		});
+	},
+	postBlog: function(params) {
+		console.log(params)
+		return Promise.resolve({"res":"success"})
 	}
 }
