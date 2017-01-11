@@ -122,14 +122,17 @@
                             });
                         });
 
-                        $('#postimg').change(function(){
+                        var changefn = function(){
                             $(this).uploadFile({
-                                url: '/blog/postimg',//上传路径
-                                success: function(data, $element) {//上传成功
-                                   alert("上传成功");
+                                url: '/blog/postimg',
+                                html5Mode: true,
+                                success: function(data, $element) {
+                                    $('#postimg').replaceWith('<input id="postimg" type="file" name="imgfile" accept="image/*" />');
+                                    $('#postimg').on('change', changefn);
                                 }
                             })
-                        });
+                        }
+                        $('#postimg').change(changefn);
                 } else {
                     alert("login fail");
                 }

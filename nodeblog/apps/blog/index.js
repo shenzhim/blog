@@ -1,3 +1,4 @@
+var fs = require('fs');
 var app = require('express')();
 var model = require('./model');
 var qiniu = require('../../utils/uploadqiniu');
@@ -16,9 +17,9 @@ app.post('/postimg', multipartMiddleware, function(req, res, next) {
 			key: req.files.imgfile.originalFilename,
 			filePath: req.files.imgfile.path
 		}).then(function(r){
+			// 删除临时文件
+			fs.unlink(req.files.imgfile.path);
 			res.end(JSON.stringify(r));
-		}).catch(function(){
-			res.end(JSON.stringify({}));
 		});
 	}
 });
