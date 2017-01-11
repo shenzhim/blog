@@ -127,10 +127,13 @@
                                 url: '/blog/postimg',
                                 html5Mode: true,
                                 success: function(data, $element) {
+                                    if (data.key) {
+                                        $('#preview').attr('src', "//img.shenzm.cn/" + data.key);    
+                                    }
                                     $('#postimg').replaceWith('<input id="postimg" type="file" name="imgfile" accept="image/*" />');
                                     $('#postimg').on('change', changefn);
                                 }
-                            })
+                            });
                         }
                         $('#postimg').change(changefn);
                 } else {
@@ -162,6 +165,7 @@
             <div class="item">
                 <span style="vertical-align: top;">概要：</span>
                 <textarea id="summary" style="width:500px;height:100px;"></textarea>
+                <img id="preview" style="width:200px;height:100px;vertical-align: baseline;" />
             </div>
         </div>
         <br/>
