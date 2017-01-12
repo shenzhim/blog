@@ -1,6 +1,25 @@
 const dbs = require('../../dbs');
 const date = require("../../utils/date");
 
+let _inserMsg = function(params) {
+	return dbs.data.insertMsg(params.id, JSON.stringify({
+		title: params.title,
+		content: params.content,
+		preid:'',
+		pretitle: '',
+		nextid: '',
+		nexttitle: ''
+	}));
+}
+
+let _addBlog = function(params) {
+	return dbs.data.addBlog(params.id, params.tag, JSON.stringify({
+		title: params.title,
+		img: params.img,
+		summary: params.summary
+	}));
+}
+
 module.exports = {
 	getList: function() {
 		return dbs.data.list(1, 'blog').then(function(result) {
@@ -24,7 +43,20 @@ module.exports = {
 		});
 	},
 	postBlog: function(params) {
-		console.log(params)
-		return Promise.resolve({"res":"success"})
+		return dbs.data.genId().then(function(id) {
+			var data = {
+				res: "fail"
+			}
+
+			if (!id) return Promise.resolve(data);
+
+			params.id = id;
+			return Promise.all([_inserMsg(params), _addBlog(params)]).then(function(result){
+				if (result[0] && result[1]) {
+					data.res = "success";
+				} 
+				return Promise.resolve(data)
+			})
+		})
 	}
 }
