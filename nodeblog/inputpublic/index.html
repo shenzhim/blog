@@ -5,38 +5,11 @@
     <title>Shenzm_发布文章</title>
     <link rel="stylesheet" href="/inputpublic/css/style.css" />
     <link rel="stylesheet" href="/inputpublic/css/editormd.css" />
-    <style type="text/css">
-        .item {
-            margin-bottom: 5px;
-        }
-        
-        span.btn {
-            position: relative;
-            font-size: 12px;
-            color: #000;
-        }
-
-        .btn:hover {
-            color: #fff;
-            background: #e37100; 
-        }
-
-        #postimg {
-            position: absolute;
-            right: 0;
-            top: 0;
-            opacity: 0;
-            cursor: pointer;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
     <script src="/inputpublic/js/jquery.min.js"></script>
     <script src="/inputpublic/js/upload.js"></script>
     <script src="/inputpublic/js/editormd.js"></script>
     <script type="text/javascript">
     var editor;
-
     var queryString = function() {
         let vars = {},
             hash,
@@ -77,55 +50,6 @@
                             flowChart: true,
                             sequenceDiagram: true
                         });
-
-                        $("#submitbtn").click(function() {
-                            var title = $("#title").val();
-                            var tag = $("#tag").val();
-                            var summary = $("#summary").val();
-                            var content = editor.getMarkdown();
-                            var img = $('#preview').attr('src');
-
-                            if (!title || !tag || !summary || !content || !img) {
-                                alert("请检查是否有缺失内容！");
-                                return;
-                            }
-                            $.ajax({
-                                type: "POST",
-                                url: "/blog/postblog",
-                                data: {
-                                    title: title,
-                                    tag: tag,
-                                    img: img,
-                                    summary: summary,
-                                    content: content
-                                },
-                                success: function(result) {
-                                    if (result && result.res === 'success') {
-                                        alert("发布成功！");
-                                    } else {
-                                        alert("发布失败！");
-                                    }
-                                },
-                                error: function(message) {
-                                    alert("submit error");
-                                }
-                            });
-                        });
-
-                        var changefn = function(){
-                            $(this).uploadFile({
-                                url: '/blog/postimg',
-                                html5Mode: true,
-                                success: function(data, $element) {
-                                    if (data.key) {
-                                        $('#preview').attr('src', "//img.shenzm.cn/" + data.key);    
-                                    }
-                                    $('#postimg').replaceWith('<input id="postimg" type="file" name="imgfile" accept="image/*" />');
-                                    $('#postimg').on('change', changefn);
-                                }
-                            });
-                        }
-                        $('#postimg').change(changefn);
                 } else {
                     alert("login fail");
                 }
@@ -134,8 +58,104 @@
                 alert("login error");
             }
         });
-    });
 
+         var changefn = function(){
+            $(this).uploadFile({
+                url: '/blog/postimg',
+                html5Mode: true,
+                success: function(data, $element) {
+                    if (data.key) {
+                        $('#preview').attr('src', "//img.shenzm.cn/" + data.key);    
+                    }
+                    $('#postimg').replaceWith('<input id="postimg" type="file" name="imgfile" accept="image/*" />');
+                    $('#postimg').on('change', changefn);
+                }
+            });
+        }
+        // 上传图片
+        $('#postimg').change(changefn);
+
+        // 提交
+        $("#submitbtn").click(function() {
+            var title = $("#title").val();
+            var tag = $("#tag").val();
+            var summary = $("#summary").val();
+            var content = editor.getMarkdown();
+            var img = $('#preview').attr('src');
+
+            if (!title || !tag || !summary || !content || !img) {
+                alert("请检查是否有缺失内容！");
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/blog/postblog",
+                data: {
+                    title: title,
+                    tag: tag,
+                    img: img,
+                    summary: summary,
+                    content: content
+                },
+                success: function(result) {
+                    if (result && result.res === 'success') {
+                        alert("发布成功！");
+                    } else {
+                        alert("发布失败！");
+                    }
+                },
+                error: function(message) {
+                    alert("submit error");
+                }
+            });
+        });
+
+        // 编辑
+        $("#editbtn").click(function() {
+
+        })
+
+         // 检索
+        $("#searchbtn").click(function() {
+            var msgid = $("#msgid").val();
+            if (!msgid) return;
+            $.ajax({
+                method: "post",
+                url: "/message/editdata",
+                data: {
+                  msgid: msgid
+                },
+                success: function(result) {
+                    messageid = result.id;
+                    $("#title").val(result.title);
+                    $("#tag").val(result.tag);
+                    $("#summary").val(result.summary);
+                    $("#preview").attr('src', result.img);
+                    editor.setMarkdown(result.content);
+                },
+                error: function(message) {
+                    alert("edit error");
+                }
+            });
+        })
+
+        // 简介
+        $("#searchsummary").click(function() {
+            $.ajax({
+                type: "get",
+                url: "/rest/object/get.1.base",
+                contentType: "application/json;",
+                dataType: "json",
+                success: function(result) {
+                    messageid = undefined;
+                    editor.setMarkdown(result.user.intro);
+                },
+                error: function(message) {
+                    alert("edit error");
+                }
+            });
+        })
+    });
     </script>
 </head>
 
@@ -143,9 +163,16 @@
     <div id="layout" style="display:none;">
         <div style="margin-left:5%;margin-top: 2%;">
             <div class="item">
+                <span>博客：</span>
+                <input type="text" id="msgid" style="width:80px;height:30px;" />
+                <input type="submit" id="searchbtn" class="btn" value="检索" style="width:80px;" />
+                <input type="submit" id="searchsummary" class="btn" value="简介" style="width:80px;" />
+                <input type="submit" id="editbtn" class="btn" value="编辑" style="width:80px;" />
+            </div>
+            <div class="item">
                 <span>标题：</span>
                 <input type="text" id="title" style="width:300px;height:30px;" />
-                <input type="button" id="submitbtn" class="btn" value="发布" style="width:80px;" />
+                <input type="button" id="submitbtn" class="btn" value="提交" style="width:80px;" />
                 <span class="btn">上传背景图<input id="postimg" type="file" name="imgfile" accept="image/*" /></span>
             </div>
             <div class="item">
