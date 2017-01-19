@@ -15,13 +15,13 @@ log(buildScript);
 exec(buildScript);
 
 // tar
-var tarScript = 'tar czvf ./dist.tar.gz ./public/dist';
+var tarScript = 'tar czvf ./nodeblog.tar.gz ../nodeblog';
 log(tarScript);
 exec(tarScript);
 
 rl.question('请输入用户名: ', (user) => {
 	rl.question('请输入服务器ip: ', (ip) => {
-		var scpScript = `sudo scp ./dist.tar.gz ${user}@${ip}:/home/shenzm/nodeblog/blog/nodeblog/`;
+		var scpScript = `sudo scp ./nodeblog.tar.gz ${user}@${ip}:/home/shenzm/nodeblog/blog/`;
 		log(scpScript);
 
 		exec(scpScript);
