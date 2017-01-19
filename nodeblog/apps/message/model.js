@@ -30,9 +30,10 @@ module.exports = {
 			var tag = data[1] ? data[1][0].tag : '';
 
 			return {
+				id: msgid,
 				tag: tag,
 				title: res1.title,
-				content: markdown(res1.content),
+				content: res1.content,
 				preid: res1.preid,
 				pretitle: res1.pretitle,
 				nextid: res1.nextid,

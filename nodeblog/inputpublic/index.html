@@ -10,6 +10,7 @@
     <script src="/inputpublic/js/editormd.js"></script>
     <script type="text/javascript">
     var editor;
+    var messageid;
     var queryString = function() {
         let vars = {},
             hash,
@@ -44,7 +45,7 @@
                             placeholder: "写点什么吧。。。",
                             imageUpload:true,
                             imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-                            imageUploadURL:"/rest/storage/attachment",
+                            imageUploadURL:"/blog/postimg/",
                             emoji: true,
                             taskList: true,
                             flowChart: true,
@@ -59,7 +60,7 @@
             }
         });
 
-         var changefn = function(){
+        var changefn = function(){
             $(this).uploadFile({
                 url: '/blog/postimg',
                 html5Mode: true,
@@ -67,7 +68,7 @@
                     if (data.key) {
                         $('#preview').attr('src', "//img.shenzm.cn/" + data.key);    
                     }
-                    $('#postimg').replaceWith('<input id="postimg" type="file" name="imgfile" accept="image/*" />');
+                    $('#postimg').replaceWith('<input id="postimg" type="file" name="file" accept="image/*" />');
                     $('#postimg').on('change', changefn);
                 }
             });
@@ -91,6 +92,7 @@
                 type: "POST",
                 url: "/blog/postblog",
                 data: {
+                    id: messageid,
                     title: title,
                     tag: tag,
                     img: img,
@@ -109,11 +111,6 @@
                 }
             });
         });
-
-        // 编辑
-        $("#editbtn").click(function() {
-
-        })
 
          // 检索
         $("#searchbtn").click(function() {
@@ -163,17 +160,16 @@
     <div id="layout" style="display:none;">
         <div style="margin-left:5%;margin-top: 2%;">
             <div class="item">
-                <span>博客：</span>
+                <span>ID：</span>
                 <input type="text" id="msgid" style="width:80px;height:30px;" />
                 <input type="submit" id="searchbtn" class="btn" value="检索" style="width:80px;" />
                 <input type="submit" id="searchsummary" class="btn" value="简介" style="width:80px;" />
-                <input type="submit" id="editbtn" class="btn" value="编辑" style="width:80px;" />
             </div>
             <div class="item">
                 <span>标题：</span>
                 <input type="text" id="title" style="width:300px;height:30px;" />
                 <input type="button" id="submitbtn" class="btn" value="提交" style="width:80px;" />
-                <span class="btn">上传背景图<input id="postimg" type="file" name="imgfile" accept="image/*" /></span>
+                <span class="btn">上传背景图<input id="postimg" type="file" name="file" accept="image/*" /></span>
             </div>
             <div class="item">
                 <span>标签：</span>

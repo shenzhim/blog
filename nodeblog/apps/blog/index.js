@@ -17,13 +17,13 @@ app.post('/postimg', multipartMiddleware, function(req, res, next) {
 	auth(token).then(function(data){
 		if (!data.res) {
 			return res.json(data);
-		} else if (req.files && req.files.imgfile) {
+		} else if (req.files && req.files.file) {
 			qiniu.uploadFile({
-				key: req.files.imgfile.originalFilename,
-				filePath: req.files.imgfile.path
+				key: req.files.file.originalFilename,
+				filePath: req.files.file.path
 			}).then(function(r){
 				// 删除临时文件
-				fs.unlink(req.files.imgfile.path);
+				fs.unlink(req.files.file.path);
 				res.end(JSON.stringify(r));
 			});
 		} else {
@@ -38,9 +38,17 @@ app.post('/postblog', function(req, res, next) {
 		if (!data.res) {
 			res.json(data);
 		} else {
-			model.postBlog(req.body).then(function(data) {
-				res.json(data);
-			}).catch(next)		
+			if (req.body.id) {
+				// 编辑
+				model.editBlog(req.body).then(function(data) {
+					res.json(data);
+				}).catch(next)
+			} else {
+				// 新增
+				model.postBlog(req.body).then(function(data) {
+					res.json(data);
+				}).catch(next)
+			}
 		}
 	})
 });

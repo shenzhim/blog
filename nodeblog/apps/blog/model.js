@@ -1,23 +1,42 @@
 const dbs = require('../../dbs');
 const date = require("../../utils/date");
 
-let _inserMsg = function(params) {
-	return dbs.data.insertMsg(params.id, JSON.stringify({
-		title: params.title,
-		content: params.content,
-		preid:'',
-		pretitle: '',
-		nextid: '',
-		nexttitle: ''
-	}));
+let _execMsg = function(params, method) {
+	if (method === 'add') {
+		return dbs.data.insertMsg(params.id, JSON.stringify({
+			title: params.title,
+			content: params.content,
+			preid: '',
+			pretitle: '',
+			nextid: '',
+			nexttitle: ''
+		}));
+	} else {
+		return dbs.data.updateMsg(params.id, JSON.stringify({
+			title: params.title,
+			content: params.content,
+			preid: '',
+			pretitle: '',
+			nextid: '',
+			nexttitle: ''
+		}));
+	}
 }
 
-let _addBlog = function(params) {
-	return dbs.data.addBlog(params.id, params.tag, JSON.stringify({
-		title: params.title,
-		img: params.img,
-		summary: params.summary
-	}));
+let _execBlog = function(params, method) {
+	if (method === 'add') {
+		return dbs.data.addBlog(params.id, params.tag, JSON.stringify({
+			title: params.title,
+			img: params.img,
+			summary: params.summary
+		}));	
+	} else {
+		return dbs.data.updateBlog(params.id, params.tag, JSON.stringify({
+			title: params.title,
+			img: params.img,
+			summary: params.summary
+		}));	
+	}
 }
 
 module.exports = {
@@ -51,12 +70,23 @@ module.exports = {
 			if (!id) return Promise.resolve(data);
 
 			params.id = id;
-			return Promise.all([_inserMsg(params), _addBlog(params)]).then(function(result){
+			return Promise.all([_execMsg(params, 'add'), _execBlog(params, 'add')]).then(function(result){
 				if (result[0] && result[1]) {
 					data.res = "success";
 				} 
 				return Promise.resolve(data)
 			})
+		})
+	},
+	editBlog: function(params) {
+		var data = {
+			res: "fail"
+		}
+		return Promise.all([_execMsg(params, 'upd'), _execBlog(params, 'upd')]).then(function(result){
+			if (result[0] && result[1]) {
+				data.res = "success";
+			} 
+			return Promise.resolve(data)
 		})
 	}
 }

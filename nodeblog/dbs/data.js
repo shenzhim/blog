@@ -50,8 +50,8 @@ module.exports = function(pool) {
 		this.addBlog = function(id, tag, value) {
 			return co(function*() {
 				let db = yield pool.getConnection();
-				let sql = "INSERT INTO DATA VALUE (?,?,?,?,?,?,?,?)";
-				let params = [1, 'blog', tag, id, id, new Date(), new Date(), value];
+				let sql = "INSERT INTO DATA VALUE (1,'blog',?,?,?,?,?,?)";
+				let params = [tag, id, id, new Date(), new Date(), value];
 
 				const [result] = yield db.execute(sql, params);
 
@@ -60,11 +60,37 @@ module.exports = function(pool) {
 			});
 		}
 
+		this.updateBlog = function(id, tag, value) {
+			return co(function*() {
+				let db = yield pool.getConnection();
+				let sql = "UPDATE DATA SET tag=?, value=? WHERE id= 1 AND list='blog' AND bindid=?";
+				let params = [tag, value, id];
+
+				const [result] = yield db.execute(sql, params);
+
+				db.release();
+				return result.affectedRows === 1;
+			});	
+		}
+
 		this.insertMsg = function(id, value) {
 			return co(function*() {
 				let db = yield pool.getConnection();
-				let sql = "INSERT INTO DATA VALUE (?,?,?,?,?,?,?,?)";
-				let params = [id, '', '', 0, 0, new Date(), new Date(), value];
+				let sql = "INSERT INTO DATA VALUE (?,'','',0,0,?,?,?)";
+				let params = [id, new Date(), new Date(), value];
+
+				const [result] = yield db.execute(sql, params);
+
+				db.release();
+				return result.affectedRows === 1;
+			});
+		}
+
+		this.updateMsg = function(id, value) {
+			return co(function*() {
+				let db = yield pool.getConnection();
+				let sql = "UPDATE DATA SET value=? WHERE id= ?";
+				let params = [value, id];
 
 				const [result] = yield db.execute(sql, params);
 
