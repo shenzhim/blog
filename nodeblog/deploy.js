@@ -21,11 +21,13 @@ exec(tarScript);
 
 rl.question('请输入用户名: ', (user) => {
 	rl.question('请输入服务器ip: ', (ip) => {
-		var scpScript = `sudo scp ./nodeblog.tar.gz ${user}@${ip}:/home/shenzm/nodeblog/blog/`;
-		log(scpScript);
+		rl.question('请输入路径: ', (path) => {
+			var scpScript = `sudo scp ./nodeblog.tar.gz ${user}@${ip}:${path}`;
+			log(scpScript);
 
-		exec(scpScript);
-		rl.close();
+			exec(scpScript);
+			rl.close();
+		}
 	});	
 });
 
