@@ -13,6 +13,16 @@
 					<span class="next" ><svg class="icon icon-point-right"><use xlink:href="#icon-point-right"></use></svg></span>
 				</a>
 			</div>
+			<div class="ds-share" :data-thread-key="$route.params.id" :data-title="title" :data-images="img" :data-content="summary" :data-url="url">
+                <div class="ds-share-inline">
+                    <ul class="ds-share-icons-16">
+                    	<li data-toggle="ds-share-icons-more">分享到：</li>
+                        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+                        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                    </ul>
+                </div>
+            </div>
 			<!-- 多说评论框 start -->
 			<div class="ds-thread" :data-thread-key="$route.params.id" :data-title="title" :data-url="url"></div>
 			<!-- 多说评论框 end -->
@@ -31,7 +41,9 @@ window.duoshuoQuery = {short_name:"shenzm"};
 export default {
 	data() {
 		return {
+			img: '',
 			title: '',
+			summary: '',
 			content: '',
 			preid: '',
 			pretitle: '上一篇',
@@ -46,6 +58,8 @@ export default {
 		    this.content = response.data.content;
 		    this.preid = response.data.preid;
 		    this.nextid = response.data.nextid;
+		    this.summary = response.data.summary || response.data.title;
+		    this.img = response.data.img;
 		    if (window.outerWidth > 867) {
 		    	this.pretitle = response.data.pretitle;
 		    	this.nexttitle = response.data.nexttitle;

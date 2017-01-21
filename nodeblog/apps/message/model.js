@@ -2,24 +2,7 @@ const markdown = require('../../utils/markdown');
 const dbs = require('../../dbs');
 
 module.exports = {
-	getData: function(msgid) {
-		if (!msgid) {
-			return Promise.resolve({});
-		}
-
-		return dbs.data.list(msgid).then(function(result) {
-			result = result ? JSON.parse(result[0].value) : {};
-			return {
-				title: result.title,
-				content: markdown(result.content),
-				preid: result.preid,
-				pretitle: result.pretitle,
-				nextid: result.nextid,
-				nexttitle: result.nexttitle
-			}
-		});
-	},
-	getWholeData: function(msgid) {
+	getWholeData: function(msgid, type) {
 		if (!msgid) {
 			return Promise.resolve({});
 		}
@@ -33,7 +16,7 @@ module.exports = {
 				id: msgid,
 				tag: tag,
 				title: res1.title,
-				content: res1.content,
+				content: type === 'edit' ? res1.content : markdown(res1.content),
 				preid: res1.preid,
 				pretitle: res1.pretitle,
 				nextid: res1.nextid,
