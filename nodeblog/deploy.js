@@ -27,7 +27,7 @@ rl.question('请输入用户名: ', (user) => {
 
 			exec(scpScript);
 			rl.close();
-		}
+		});
 	});	
 });
 
