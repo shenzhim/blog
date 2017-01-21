@@ -24,6 +24,9 @@ app.post('/postimg', multipartMiddleware, function(req, res, next) {
 			}).then(function(r){
 				// 删除临时文件
 				fs.unlink(req.files.file.path);
+
+				r.success = 1;
+				r.url = '//img.shenzm.cn/' + r.key;
 				res.end(JSON.stringify(r));
 			});
 		} else {
