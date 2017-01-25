@@ -14,7 +14,7 @@ var buildScript = 'npm run build';
 log(buildScript);
 exec(buildScript);
 
-// tar
+// tar xzvf ./nodeblog.tar.gz
 var tarScript = 'tar czvf ./nodeblog.tar.gz ../nodeblog';
 log(tarScript);
 exec(tarScript);
