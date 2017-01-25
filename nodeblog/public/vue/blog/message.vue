@@ -26,6 +26,15 @@
 			<!-- 多说评论框 start -->
 			<div class="ds-thread" :data-thread-key="$route.params.id" :data-title="title" :data-url="url"></div>
 			<!-- 多说评论框 end -->
+
+			<div class="footer-link">
+				<p class="link">友情链接</p>
+				<ul>
+					<li><a href="http://anleb.com/" target="_blank">anleb的博客</a></li>
+					<li><a href="http://asionius.com/#!/blog" target="_blank">asionius的博客</a></li>
+				</ul>
+				<p class="declare">本站内容如无特殊声明均为原创，转载请注明出处</p>
+			</div>
 		</div>
 	</transition>
 </template>
@@ -82,3 +91,10 @@ export default {
 	}
 }
 </script>
+
+<style>
+	.ds-share,
+	.ds-thread{
+		padding: 0 5px; 
+	}
+</style>

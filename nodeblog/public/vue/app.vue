@@ -5,7 +5,7 @@
       <div class="overlay"></div>
       <div class="content">
           <router-link class="avatar" to="/blog/list"><img src="../img/avatar.png" alt="shenzm"></router-link>
-          <h1 class="title">Shenzm.志敏</h1>
+          <h1 class="title">志敏的博客</h1>
           <p class="describe">一个男人总要有一技之长来养家糊口...</p>
           <ul class="navcontainer">
             <li class="nav_1"><router-link to="/blog/me"><svg class="icon icon-smile-o"><use xlink:href="#icon-smile-o"></use></svg></router-link></li>

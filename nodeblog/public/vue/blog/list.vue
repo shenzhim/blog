@@ -32,6 +32,7 @@ export default {
 		}
 	},
 	beforeCreate() {
+		document.title = '博客列表 - 志敏的博客';
 		this.$http.get('/blog/list').then((response) => {
 		    this.list = response.data || [];
 		}, (response) => {

@@ -12,8 +12,12 @@
 		    	</ul>
 		    </div>
 		    <div class="container">
-		    	<div class="masthead" :class="{'hide-masthead': isHide }">
+		    	<div class="masthead">
 		    		<router-link to="/blog/list">Shenzm</router-link><small> 志敏的博客</small>
+		    		<div class="masthead-icon">
+		    			<router-link to="/blog/list"><svg class="icon icon-home"><use xlink:href="#icon-home"></use></svg></router-link>
+		    			<router-link to="/blog/me"><svg class="icon icon-grin"><use xlink:href="#icon-grin"></use></svg></router-link>	
+		    		</div>
 		    	</div>
 		    	<router-view></router-view>
 		    </div>
@@ -23,33 +27,8 @@
 
 <script>
 export default {
-	data() {
-		return {
-			isHide : false
-		}
-	},
 	created() {
-		var t,
-			o =0, 
-			c = 0;
-
-		window.addEventListener('scroll', () => {
-		    if(t) clearTimeout(t);
-		    
-		    t = setTimeout(() => {
-		    	c = window.scrollY;
-
-	            if(o <= c && !this.isHide) {
-	            	//下滚
-	            	this.isHide = true;
-	            } else if (o > c && this.isHide) {
-	            	//上滚
-	            	this.isHide = false;
-	            }
-
-	            o = c;
-		    }, 500);
-		});
+		document.title = '志敏的博客';
 	}
 }
 </script>

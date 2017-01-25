@@ -23,6 +23,7 @@ export default {
 		this.$http.get('/me/data').then((response) => {
 			this.title = response.data.title;
 		    this.content = response.data.content;
+		    document.title =`${this.title} - 志敏的博客`;
 		}, (response) => {
 			alert("请求数据失败！")
 		});
