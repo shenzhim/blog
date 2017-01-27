@@ -3,6 +3,9 @@
 		<div class="message">
 			<h2 class="title">{{title}}</h2>
 			<div class="content" v-html="content"></div>
+			<div class="go-top" :class="{'hide': isHide }" @click="gotop">
+				<svg class="icon icon-rocket"><use xlink:href="#icon-rocket"></use></svg>
+			</div>
 			<div class="page">
 				<a v-if="preid" :href="'/blog/message/' + preid" class="page-left">
 					<span class="pre"><svg class="icon icon-point-left"><use xlink:href="#icon-point-left"></use></svg></span>
@@ -58,7 +61,9 @@ export default {
 			pretitle: '上一篇',
 			nextid: '',
 			nexttitle: '下一篇',
-			url: location.href
+			url: location.href,
+			isHide : true,
+			scrolldelay: ''
 		}
 	},
 	beforeCreate() {
@@ -88,6 +93,26 @@ export default {
 		ds.charset = 'UTF-8';
 		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
 		// 多说公共JS代码 end -->
+		
+		var timer;
+		window.addEventListener('scroll', () => {
+		    if(timer) {
+		    	clearTimeout(timer);	
+		    } 
+		    
+		    timer = setTimeout(() => {
+		    	if (document.body.scrollTop > 900) {
+		    		this.isHide = false;
+		    	} else {
+		    		this.isHide = true;
+		    	}
+		    }, 500);
+		});
+	},
+	methods: {
+		gotop() {
+			window.scroll(0, 0);
+		}
 	}
 }
 </script>
