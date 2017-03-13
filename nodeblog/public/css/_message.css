@@ -116,6 +116,14 @@
             max-width: 100%;
         }
 
+        blockquote {
+            color: #999;
+            border-left: 4px solid #ddd;
+            padding-left: 20px;
+            margin-left: 0;
+            font-style: italic;
+        }
+
         .emoji {
             width: 24px;
             height: 24px;
