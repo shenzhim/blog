@@ -41,6 +41,8 @@ module.exports = function(pool) {
 					params.push(sort);
 				}
 
+				sql += ' order by sort';
+
 				const [result, fields] = yield db.execute(sql, params);
 				db.release();
 				return result;
