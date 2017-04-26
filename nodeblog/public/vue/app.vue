@@ -6,7 +6,7 @@
       <div class="content">
           <router-link class="avatar" to="/blog/list"><img src="../img/avatar.png" alt="shenzm"></router-link>
           <h1 class="title">志敏的博客</h1>
-          <p class="describe">一个男人总要有一技之长来养家糊口...</p>
+          <p class="describe">纸上得来终觉浅 绝知此事要躬行</p>
           <ul class="navcontainer">
             <li class="nav_1"><router-link to="/blog/me"><svg class="icon icon-smile-o"><use xlink:href="#icon-smile-o"></use></svg></router-link></li>
             <li class="nav_2"><router-link to="/blog/list"><svg class="icon icon-align-left"><use xlink:href="#icon-align-left"></use></svg></router-link></li>
