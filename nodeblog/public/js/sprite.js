@@ -1,6 +1,13 @@
 var SVG = `
 <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
+<linearGradient id="dream" x1="0%" y1="0%" x2="100%" y2="100%" spreadMethod="pad">
+<stop offset="0%"  stop-color="#2b008b" />
+<stop offset="20%" stop-color="#c4862a" />
+<stop offset="40%" stop-color="#ff9800"/>
+<stop offset="70%" stop-color="#3DC4D0"/>
+<stop offset="100%" stop-color="#5c2392"/>
+</linearGradient>
 <symbol id="icon-align-left" viewBox="0 0 28 28">
 <title>align-left</title>
 <path class="path1" d="M28 21v2c0 0.547-0.453 1-1 1h-26c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h26c0.547 0 1 0.453 1 1zM22 15v2c0 0.547-0.453 1-1 1h-20c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h20c0.547 0 1 0.453 1 1zM26 9v2c0 0.547-0.453 1-1 1h-24c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h24c0.547 0 1 0.453 1 1zM20 3v2c0 0.547-0.453 1-1 1h-18c-0.547 0-1-0.453-1-1v-2c0-0.547 0.453-1 1-1h18c0.547 0 1 0.453 1 1z"></path>

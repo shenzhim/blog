@@ -13,7 +13,13 @@
 		    </div>
 		    <div class="container">
 		    	<div class="masthead">
-		    		<router-link to="/blog/list">Shenzm</router-link><small> 志敏的博客</small>
+		    		<router-link to="/blog/list">Shenzm</router-link>
+					<svg class="blog-name">
+						<mask id="shade"><text fill="#ffffff" x="0" y="30">志敏的博客</text></mask>
+						<g mask="url(#shade)">
+							<rect class="blog-name-animate" x="0" y="0" width="380px" height="100px" fill="url(#dream)"/>
+						</g>
+					</svg>
 		    		<div class="masthead-icon">
 		    			<router-link to="/blog/list"><svg class="icon icon-home"><use xlink:href="#icon-home"></use></svg></router-link>
 		    			<router-link to="/blog/me"><svg class="icon icon-grin"><use xlink:href="#icon-grin"></use></svg></router-link>	

@@ -79,6 +79,16 @@
         color: silver;
         font-size: 75%;
       }
+
+      .blog-name {
+        width: 115px;
+        height: 33px;
+        font-size: 80%;
+      }
+
+      .blog-name-animate{
+        animation: animate 4s alternate infinite
+      }
     }
 
     .masthead-icon {
@@ -100,6 +110,16 @@
       transform: translate(0, -100%);
       opacity: 0.5;
     }
+}
+
+@keyframes animate{
+  0% {
+    transform: translateX(0px) translateY(0px)
+  }
+  
+  100% {
+    transform: translateX(-220px) translateY(-60px)
+  }
 }
 
 @media (max-width: 867px) {

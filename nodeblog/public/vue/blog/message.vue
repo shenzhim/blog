@@ -16,20 +16,6 @@
 					<span class="next" ><svg class="icon icon-point-right"><use xlink:href="#icon-point-right"></use></svg></span>
 				</a>
 			</div>
-			<div class="ds-share" :data-thread-key="$route.params.id" :data-title="title" :data-images="img" :data-content="summary" :data-url="url">
-                <div class="ds-share-inline">
-                    <ul class="ds-share-icons-16">
-                    	<li data-toggle="ds-share-icons-more">分享到：</li>
-                        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-                        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-                        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-                    </ul>
-                </div>
-            </div>
-			<!-- 多说评论框 start -->
-			<div class="ds-thread" :data-thread-key="$route.params.id" :data-title="title" :data-url="url"></div>
-			<!-- 多说评论框 end -->
-
 			<div class="footer-link">
 				<p class="link">友情链接</p>
 				<ul>
@@ -84,16 +70,6 @@ export default {
 		});
 	},
 	created() {
-		window.DUOSHUO = false;
-
-		// 多说公共JS代码 start (一个网页只需插入一次)
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-		// 多说公共JS代码 end -->
-		
 		var timer;
 		window.addEventListener('scroll', () => {
 		    if(timer) {
