@@ -14,6 +14,9 @@ var buildScript = 'npm run build';
 log(buildScript);
 exec(buildScript);
 
+// copy wx.txt to dist
+exec('cp ./public/MP_verify_tjeBVjCbW6jU8XJW.txt ./public/dist/');
+
 // tar xzvf ./nodeblog.tar.gz
 var tarScript = 'tar czvf ./nodeblog.tar.gz ../nodeblog';
 log(tarScript);
