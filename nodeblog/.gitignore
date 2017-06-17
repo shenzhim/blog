@@ -15,6 +15,9 @@ qiniuconfig.json
 *.tar
 *.tar.gz
 
+# wxconfig
+./apps/wx/config.js
+
 # Runtime data
 pids
 *.pid

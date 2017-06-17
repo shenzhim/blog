@@ -53,9 +53,11 @@
     "feed": "^0.3.0",
     "highlight.js": "^9.8.0",
     "mysql2": "^1.1.2",
+    "node-fetch": "^1.7.1",
     "pm2": "^2.0.12",
     "qiniu": "^6.1.13",
     "serve-favicon": "~2.3.0",
+    "sha1": "^1.1.1",
     "vue": "^2.0.1",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.0.1"

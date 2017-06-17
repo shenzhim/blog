@@ -34,7 +34,14 @@ import VueResource from 'vue-resource';
 
 Vue.use(VueResource);
 
-window.duoshuoQuery = {short_name:"shenzm"};
+var jsApiList = [
+    'checkJsApi',
+    'onMenuShareTimeline',
+    'onMenuShareAppMessage',
+    'onMenuShareQQ',
+    'onMenuShareWeibo',
+    'onMenuShareQZone'
+];
 
 export default {
 	data() {
@@ -66,6 +73,39 @@ export default {
 		    }
 		    document.title =`${this.title} - 志敏的博客`;
 		}, (response) => {
+			alert("请求数据失败！")
+		});
+
+		this.$http.get('/wx/config', {
+			params: {
+				url: location.href
+			}
+		}).then((data) => {
+			if (window.wx) {
+                wx.config({
+                    debug: false,
+                    appId: data.appId,
+                    timestamp: data.timestamp,
+                    nonceStr: data.nonceStr,
+                    signature: data.signature,
+                    jsApiList: jsApiList
+                });
+
+                wx.ready(function() {
+                	var shareData = {
+					    title: document.title,
+					    link: location.href,
+					    desc: '纸上得来终觉浅 绝知此事要躬行',
+					    imgUrl: '//shenzm.cn/6a265edd5498cac7f27a6487f01fde3f.png'
+					};
+                    window.wx.onMenuShareAppMessage(shareData);
+                    window.wx.onMenuShareTimeline(shareData);
+                    window.wx.onMenuShareQQ(shareData);
+                    window.wx.onMenuShareWeibo(shareData);
+                    window.wx.onMenuShareQZone(shareData);
+                });
+            }
+		}, (data) => {
 			alert("请求数据失败！")
 		});
 	},
