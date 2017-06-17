@@ -80,14 +80,14 @@ export default {
 			params: {
 				url: location.href
 			}
-		}).then((data) => {
+		}).then((response) => {
 			if (window.wx) {
                 wx.config({
                     debug: false,
-                    appId: data.appId,
-                    timestamp: data.timestamp,
-                    nonceStr: data.nonceStr,
-                    signature: data.signature,
+                    appId: response.data.appId,
+                    timestamp: response.data.timestamp,
+                    nonceStr: response.data.nonceStr,
+                    signature: response.data.signature,
                     jsApiList: jsApiList
                 });
 
@@ -96,13 +96,13 @@ export default {
 					    title: document.title,
 					    link: location.href,
 					    desc: '纸上得来终觉浅 绝知此事要躬行',
-					    imgUrl: '//shenzm.cn/6a265edd5498cac7f27a6487f01fde3f.png'
+					    imgUrl: 'http://img.shenzm.cn/logo.png'
 					};
-                    window.wx.onMenuShareAppMessage(shareData);
-                    window.wx.onMenuShareTimeline(shareData);
-                    window.wx.onMenuShareQQ(shareData);
-                    window.wx.onMenuShareWeibo(shareData);
-                    window.wx.onMenuShareQZone(shareData);
+                    wx.onMenuShareAppMessage(shareData);
+                    wx.onMenuShareTimeline(shareData);
+                    wx.onMenuShareQQ(shareData);
+                    wx.onMenuShareWeibo(shareData);
+                    wx.onMenuShareQZone(shareData);
                 });
             }
 		}, (data) => {

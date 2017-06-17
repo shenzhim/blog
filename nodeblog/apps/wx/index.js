@@ -25,12 +25,12 @@ var getAccessToken = function() {
 
 var getTicket = function(token) {
 	return new Promise(function(reslove, reject) {
-		var ticketInfo = config.ticket;
+		var ticketInfo = config.ticketInfo;
 		if (!ticketInfo || new Date().getTime() - ticketInfo.time >= ticketInfo.expires * 1000) {
 			fetch(`https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=${token}&type=jsapi`)
 			.then(res => res.json())
 			.then(json => {
-				config.accessToken = {
+				config.ticketInfo = {
 					ticket: json.ticket,
 					expires: json.expires_in,
 					time: new Date().getTime()
