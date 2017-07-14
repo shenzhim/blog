@@ -16,6 +16,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 
+// 压缩
+app.use(compression());
+
 // 编辑功能
 app.get('/inputpublic/*', function (req, res, next) {
 	var options = {
@@ -63,8 +66,6 @@ if (app.get('env') === 'development') {
 } else {
 	app.use(express.static(path.join(__dirname, 'public/dist')));
 }
-
-app.use(compression());
 
 try {
 	require('./dispatch')(app);
