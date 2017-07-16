@@ -1,4 +1,5 @@
 'use strict';
+const cache = require('./dbs/cache')();
 const ChromeRender = require('chrome-render');
 
 const CrawlerUserAgents = [
@@ -71,10 +72,19 @@ module.exports = function () {
         var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 
         if (!isChromeRender && !isExculde(fullUrl) && isCrawler(req)) {
-            chromeRender.render({
-                url: fullUrl,
+            var cacheKey = req.originalUrl;
+            cache.get(cacheKey).then(htmlString => {
+                if (htmlString) {
+                    return htmlString;
+                } else {
+                    return chromeRender.render({
+                        url: fullUrl,
+                    }).then(htmlString => {
+                        cache.set(cacheKey, htmlString);
+                    });
+                }
             }).then(htmlString => {
-                res.end(htmlString)
+                res.end(htmlString);
             }).catch(next);
         } else {
             next();
