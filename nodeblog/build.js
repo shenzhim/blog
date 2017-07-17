@@ -6,7 +6,10 @@ var webpackConfig = require('./public/webpack.config');
 var assetsPath = path.resolve(__dirname, './public/dist');
 rm('-rf', assetsPath);
 mkdir('-p', assetsPath);
-cp('robots.txt', assetsPath);
+
+cp('./public/robots.txt', assetsPath);
+cp('./public/baidu_verify_Z2tHIjmxwm.html', assetsPath);
+cp('./public/MP_verify_tjeBVjCbW6jU8XJW.txt', assetsPath);
 
 webpack(webpackConfig, function(err, stats) {
 	if (err) throw err
