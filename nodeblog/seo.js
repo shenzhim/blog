@@ -85,7 +85,13 @@ module.exports = function () {
                 }
             }).then(htmlString => {
                 res.end(htmlString);
-            }).catch(next);
+            }).catch(() => {
+                chromeRender.render({
+                    url: fullUrl,
+                }).then(htmlString => {
+                    res.end(htmlString);
+                }).catch(next);
+            });
         } else {
             next();
         }

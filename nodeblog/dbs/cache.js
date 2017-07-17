@@ -3,8 +3,11 @@ var util = require('util');
 
 module.exports = function () {
     var client = new Memcached('localhost:11211', {
-        maxKeySize: 250,
+        maxKeySize: 2500,
         poolSize: 20,
+        timeout: 1000,
+        reconnect: 5000,
+        retries: 2,
         idle: 10000
     });
     
