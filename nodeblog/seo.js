@@ -81,6 +81,7 @@ module.exports = function () {
                         url: fullUrl,
                     }).then(htmlString => {
                         cache.set(cacheKey, htmlString);
+                        return htmlString;
                     });
                 }
             }).then(htmlString => {
