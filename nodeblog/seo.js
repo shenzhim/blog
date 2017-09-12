@@ -1,4 +1,5 @@
 'use strict';
+require('shelljs/global');
 const cache = require('./dbs/cache')();
 const ChromeRender = require('chrome-render');
 
@@ -59,6 +60,8 @@ function isExculde(url) {
 }
 
 module.exports = function () {
+    exec('pgrep firefox | xargs kill -s 9');
+    
     let chromeRender;
     (async () => {
         chromeRender = await ChromeRender.new({});

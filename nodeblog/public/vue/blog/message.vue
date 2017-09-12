@@ -16,7 +16,7 @@
 					<span class="next" ><svg class="icon icon-point-right"><use xlink:href="#icon-point-right"></use></svg></span>
 				</a>
 			</div>
-			<div class="footer-link">
+			<div class="footer-link" v-if="content">
 				<p class="link">友情链接</p>
 				<ul>
 					<li><a href="http://anleb.com/" target="_blank">anleb的博客</a></li>
