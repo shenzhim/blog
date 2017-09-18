@@ -7,7 +7,7 @@ const CrawlerUserAgents = [
     'googlebot',
     'yahoo',
     'bingbot',
-    'Baiduspider',// http://baidu.com/search/spider.htm
+    'Baiduspider', // http://baidu.com/search/spider.htm
     'facebookexternalhit',
     'twitterbot',
     'rogerbot',
@@ -59,15 +59,15 @@ function isExculde(url) {
     return false;
 }
 
-module.exports = function () {
-    exec('pgrep firefox | xargs kill -s 9');
-    
+module.exports = function() {
+    exec('pgrep chrome | xargs kill -s 9');
+
     let chromeRender;
-    (async () => {
+    (async() => {
         chromeRender = await ChromeRender.new({});
     })();
 
-    return function (req, res, next) {
+    return function(req, res, next) {
         var isChromeRender = false;
         if (req.headers['x-chrome-render'] !== undefined) {
             isChromeRender = true;
