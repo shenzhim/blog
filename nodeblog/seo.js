@@ -60,7 +60,7 @@ function isExculde(url) {
 }
 
 module.exports = function() {
-    exec('pgrep chrome | xargs kill -s 9');
+    exec('pgrep chrome | sudo xargs kill -s 9');
 
     let chromeRender;
     (async() => {

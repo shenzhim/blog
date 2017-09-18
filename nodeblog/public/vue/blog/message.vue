@@ -16,7 +16,7 @@
 					<span class="next" ><svg class="icon icon-point-right"><use xlink:href="#icon-point-right"></use></svg></span>
 				</a>
 			</div>
-			<div class="footer-link" v-if="content">
+			<div class="footer-link" v-if="showfooter">
 				<p class="link">友情链接</p>
 				<ul>
 					<li><a href="http://anleb.com/" target="_blank">anleb的博客</a></li>
@@ -56,6 +56,7 @@ export default {
 			nexttitle: '下一篇',
 			url: location.href,
 			isHide : true,
+			showfooter: false,
 			scrolldelay: ''
 		}
 	},
@@ -71,6 +72,9 @@ export default {
 		    	this.pretitle = response.data.pretitle;
 		    	this.nexttitle = response.data.nexttitle;
 		    }
+		    setTimeout(()=>{
+		    	this.showfooter = true;
+		    }, 1000);
 		    document.title =`${this.title} - 志敏的博客`;
 		}, (response) => {
 			alert("请求数据失败！")
