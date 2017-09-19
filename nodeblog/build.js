@@ -10,6 +10,7 @@ mkdir('-p', assetsPath);
 cp('./public/robots.txt', assetsPath);
 cp('./public/baidu_verify_Z2tHIjmxwm.html', assetsPath);
 cp('./public/MP_verify_tjeBVjCbW6jU8XJW.txt', assetsPath);
+cp('./public/particles.min.js', assetsPath);
 
 webpack(webpackConfig, function(err, stats) {
 	if (err) throw err

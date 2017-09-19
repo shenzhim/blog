@@ -1,8 +1,8 @@
 <template>
   <transition name="main">
     <div class="main">
-      <span v-for="n in 5" class="bg"></span>
-      <div class="overlay"></div>
+      <!-- <span v-for="n in 5" class="bg"></span> -->
+      <!-- <div class="overlay"></div> -->
       <div class="content">
           <router-link class="avatar" to="/blog/list"><img src="../img/avatar.png" alt="shenzm"></router-link>
           <h1 class="title">志敏的博客</h1>
