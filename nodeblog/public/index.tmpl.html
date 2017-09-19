@@ -7,22 +7,11 @@
     <title>志敏的博客</title>
     <meta name="keywords" content="志敏,志敏的博客,shenzm,shenzm.cn">
     <meta name="description" content="志敏的博客，记录学习上和生活中的点点滴滴。">
-    <style type="text/css">
-        #particles-js {
-            position: absolute;
-            top: 0;
-            z-index: -1;
-            width: 100%;
-            height: 100%;
-            background-color: #000000;
-        }
-    </style>
 </head>
 <body>
 	<div id="app">
     	<router-view></router-view>
 	</div> 
-    <div id="particles-js"></div>
     <script type="text/javascript" src="/particles.min.js"></script>
 	<script type="text/javascript">
         var isWechat = /micromessenger/i.test(navigator.userAgent || '');
@@ -32,121 +21,6 @@
 			script.type= 'text/javascript'; 
 			script.src= '//res.wx.qq.com/open/js/jweixin-1.2.0.js'; 
 			head.appendChild(script); 
-        }
-    </script>
-    <script type="text/javascript">
-        if (window.particlesJS) {
-            var option = {
-                particles: {
-                  number: {
-                    value: 274,
-                    density: {
-                      enable: !0,
-                      value_area: 801.7060304327614
-                    }
-                  },
-                  color: {
-                    value: "#ffffff"
-                  },
-                  shape: {
-                    type: "circle",
-                    stroke: {
-                      width: 1,
-                      color: "#ffffff"
-                    },
-                    polygon: {
-                      nb_sides: 3
-                    },
-                    image: {
-                      src: "img/github.svg",
-                      width: 100,
-                      height: 100
-                    }
-                  },
-                  opacity: {
-                    value: 0.5,
-                    random: !0,
-                    anim: {
-                      enable: !1,
-                      speed: 1,
-                      opacity_min: 0.1,
-                      sync: !1
-                    }
-                  },
-                  size: {
-                    value: 3,
-                    random: !0,
-                    anim: {
-                      enable: !1,
-                      speed: 40,
-                      size_min: 0.1,
-                      sync: !1
-                    }
-                  },
-                  line_linked: {
-                    enable: !0,
-                    distance: 144,
-                    color: "#ffffff",
-                    opacity: 0.23,
-                    width: 1
-                  },
-                  move: {
-                    enable: !0,
-                    speed: 2,
-                    direction: "none",
-                    random: !0,
-                    straight: !1,
-                    out_mode: "out",
-                    bounce: !1,
-                    attract: {
-                      enable: !0,
-                      rotateX: 3447.33,
-                      rotateY: 1200
-                    }
-                  }
-                },
-                interactivity: {
-                  detect_on: "canvas",
-                  events: {
-                    onhover: {
-                      enable: !1,
-                      mode: "bubble"
-                    },
-                    onclick: {
-                      enable: !1,
-                      mode: "bubble"
-                    },
-                    resize: !0
-                  },
-                  modes: {
-                    grab: {
-                      distance: 400,
-                      line_linked: {
-                        opacity: 1
-                      }
-                    },
-                    bubble: {
-                      distance: 170.536,
-                      size: 16.241,
-                      duration: 0.893,
-                      opacity: 0.795,
-                      speed: 3
-                    },
-                    repulse: {
-                      distance: 194.89,
-                      duration: 0.4
-                    },
-                    push: {
-                      particles_nb: 4
-                    },
-                    remove: {
-                      particles_nb: 2
-                    }
-                  }
-                },
-                retina_detect: true
-            }
-            particlesJS('particles-js', option);
         }
     </script>
 </body>
