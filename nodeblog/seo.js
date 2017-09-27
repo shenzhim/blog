@@ -40,7 +40,7 @@ const exculdeFile = [
 ]
 
 function isCrawler(request) {
-    const userAgent = request.headers['user-agent'];
+    const userAgent = request.headers['user-agent'] || '';
     for (let i = 0; i < CrawlerUserAgents.length; i++) {
         const keyword = CrawlerUserAgents[i];
         if (userAgent.indexOf(keyword) >= 0) {

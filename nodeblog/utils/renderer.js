@@ -104,7 +104,8 @@ exports.getRenderer = function(markdown) {
 
 			if (defaults.emailLink) {
 				text = text.replace(regexs.emailLink, function($1, $2, $3, $4, $5) {
-					return (!$2 && $.inArray($5, "jpg|jpeg|png|gif|webp|ico|icon|pdf".split("|")) < 0) ? "<a href=\"mailto:" + $1 + "\">" + $1 + "</a>" : $1;
+					var arr = "jpg|jpeg|png|gif|webp|ico|icon|pdf".split("|");
+					return (!$2 && arr.indexOf($5) < 0) ? "<a href=\"mailto:" + $1 + "\">" + $1 + "</a>" : $1;
 				});
 			}
 			return text;
