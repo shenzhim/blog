@@ -121,7 +121,8 @@ export default {
 		    } 
 		    
 		    timer = setTimeout(() => {
-		    	if (document.body.scrollTop > 900) {
+		    	var top = document.documentElement.scrollTop || document.body.scrollTop;
+		    	if (top > 900) {
 		    		this.isHide = false;
 		    	} else {
 		    		this.isHide = true;
@@ -131,9 +132,9 @@ export default {
 	},
 	methods: {
 		gotop() {
-			var doc = document.body.scrollTop? document.body : document.documentElement;
-			this.easeout(doc.scrollTop, 0, 4, function (value) {
-    			doc.scrollTop = value;
+			var top = document.documentElement.scrollTop || document.body.scrollTop;
+			this.easeout(top, 0, 4, function (value) {
+    			document.documentElement.scrollTop = value;
 			});
 		},
 		easeout(A, B, rate, callback) {
