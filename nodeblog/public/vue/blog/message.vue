@@ -134,7 +134,11 @@ export default {
 		gotop() {
 			var top = document.documentElement.scrollTop || document.body.scrollTop;
 			this.easeout(top, 0, 4, function (value) {
-    			document.documentElement.scrollTop = value;
+				if (document.documentElement.scrollTop) {
+					document.documentElement.scrollTop = value;
+				} else {
+					document.body.scrollTop = value;
+				}
 			});
 		},
 		easeout(A, B, rate, callback) {
